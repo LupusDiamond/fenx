@@ -10,13 +10,21 @@ class App extends React.Component {
       <div>
         <Logo />
         <Cashflow />
-        <div style={{ display: "flex" }}>
-          <CashflowTable />
-          <CashflowTable />
+        <div style={styles.tablesContainer}>
+          <CashflowTable tableText="Expenses" totalAmount="100" />
+          <CashflowTable tableText="Income" totalAmount="200" />
         </div>
       </div>
     );
   }
 }
+
+const styles = {
+  tablesContainer: {
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center",
+  },
+};
 
 ReactDOM.render(<App />, document.querySelector("#root"));

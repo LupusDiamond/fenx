@@ -3,7 +3,12 @@ import styles from "./style";
 
 class Logo extends React.Component {
   render() {
-    return <div>Placeholder</div>;
+    return (
+      <div>
+        <h1 style={styles.title}>FenX</h1>
+        <p style={styles.subTitle}>The Financial Manager</p>
+      </div>
+    );
   }
 }
 
