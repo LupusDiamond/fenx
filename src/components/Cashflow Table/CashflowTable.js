@@ -5,10 +5,13 @@ class CashflowTable extends React.Component {
   render() {
     return (
       <div style={styles.container}>
-        <p>{this.props.tableTitle}</p>
         <div style={styles.inputContainer}>
-          <input type="text" placeholder={this.props.placeholder}></input>
-          <input placeholder="$000"></input>
+          <div style={styles.inputTextContainer}>
+            
+          <input style={styles.inputText} className="placeholder" type="text" placeholder={this.props.placeholder}></input>
+          </div>
+          <input style={styles.inputAmount} placeholder="$000"></input>
+          
           <button style={styles.addButton}>Add</button>
         </div>
         

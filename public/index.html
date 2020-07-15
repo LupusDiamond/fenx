@@ -16,11 +16,44 @@
     -->
     <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat">
+    
     <style>
       .appCont {
         margin: 0;
         padding: 0;
         box-sizing: border-box;
+      }
+      .placeholder::-ms-input-placeholder {
+        color: #2B6CB0;
+        font-family: "Montserrat";
+        font-size: 30px;
+        font-weight: 600;
+        line-height: 37px;
+        font-style: normal;
+        align-items: center;
+        justify-content: center;
+        /*Ms Edge*/
+      }
+      .placeholder::placeholder {
+        opacity: 1; /* Firefox */
+        color: #2B6CB0;
+        font-family: "Montserrat";
+        font-size: 30px;
+        font-weight: 600;
+        line-height: 37px;
+        font-style: normal;
+        align-items: center;
+        justify-content: center;
+      }
+      .plaeholder:-ms-input-placeholder { /* Internet Explorer 10-11 */
+        color: #7c7c7c;
+        font-family: "Montserrat";
+        font-size: 30px;
+        font-weight: 600;
+        line-height: 37px;
+        font-style: normal;
+        align-items: center;
+        justify-content: center;
       }
     </style>
     <!--

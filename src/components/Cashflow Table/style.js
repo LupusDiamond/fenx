@@ -8,8 +8,9 @@ const styles = {
     fontFamily: "Montserrat"
   },
   inputContainer: {
-    display: "flex",
-    justifyContent: "space-around"
+    display: "grid",
+    gridTemplateColumns: "3fr 1fr 1fr",
+    gap: "1rem",
   },
   addButton: {
     fontFamily: "Montserrat",
@@ -20,7 +21,31 @@ const styles = {
     border: "none",
     padding: 15,
     borderRadius: 10,
-    boxShadow: "0px 4px 6px rgba(0, 0, 0, 0.1), 0px 2px 4px rgba(0, 0, 0, 0.06)"
+    boxShadow: "0px 4px 6px rgba(0, 0, 0, 0.1), 0px 2px 4px rgba(0, 0, 0, 0.06)",
+  },
+  inputText: {
+    color: "#2B6CB0",
+    height: "100%",
+    width: "100%",
+    border: "5px solid #2C5282",
+    borderRadius: 6,
+    padding: 0
+  },
+  inputAmount: {
+    border: "5px solid #2C5282",
+    borderRadius: 6,
+    boxShadow: "0px 1px 3px rgba(0, 0, 0, 0.1), 0px 1px 2px rgba(0, 0, 0, 0.06)",
+  },
+  inputTextContainer: {
+    position: "relative",
+    
+    boxShadow: "0px 1px 3px rgba(0, 0, 0, 0.1), 0px 1px 2px rgba(0, 0, 0, 0.06)",
+  },
+  inputTextLabel: {
+    position: "absolute",
+    top: 0,
+    left: 30,
+    background: "#ffffff"
   }
 };
 
