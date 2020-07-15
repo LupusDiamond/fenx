@@ -8,7 +8,10 @@ class CashflowTable extends React.Component {
         <p style={styles.tableHeader}>
           Total Monthly {this.props.tableText} {this.props.totalAmount}$
         </p>
-        <input style={styles.input} placeholder="Enter a value"></input>
+        <input
+          style={styles.input}
+          placeholder={this.props.placeholder}
+        ></input>
       </div>
     );
   }
