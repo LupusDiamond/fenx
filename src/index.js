@@ -17,14 +17,12 @@ class App extends React.Component {
        
         <div style={styles.tablesContainer}>
           <CashflowTable
-            tableText="Expenses"
-            totalAmount="100"
-            placeholder="Enter an expense..."
+            tableTitle="Assets"
+            placeholder="Enter an asset . . ."
           />
           <CashflowTable
-            tableText="Income"
-            totalAmount="200"
-            placeholder="Enter an income..."
+            tableTitle="Liablities"
+            placeholder="Enter a liablity . . ."
           />
         </div>
       </div>
@@ -37,12 +35,13 @@ const styles = {
     padding: "0",
     margin: "0",
     display: "box-container",
-    background: "#F0F0F0"
-  },
+    background: "#F0F0F0",
+   },
   tablesContainer: {
     display: "flex",
     alignItems: "center",
-    justifyContent: "center",
+    justifyContent: "space-around",
+    marginTop: 60
   },
   boxContainer: {
     justifyContent: "space-around",
