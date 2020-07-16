@@ -15,7 +15,7 @@ class BigBoxes extends React.Component {
               >
                 Income
               </p>
-              <p className="text-xl sm:text-5xl text-blue-800 font-bold">$630</p>
+        <p className="text-xl sm:text-5xl text-blue-800 font-bold">${this.props.income || 0}</p>
             </div>
 
             <div
@@ -26,7 +26,7 @@ class BigBoxes extends React.Component {
               >
                 Expenses
               </p>
-              <p className="text-xl sm:text-5xl text-yellow-800 font-bold">$535</p>
+        <p className="text-xl sm:text-5xl text-yellow-800 font-bold">${this.props.expenses || 0}</p>
             </div>
             
             <div
@@ -37,7 +37,7 @@ class BigBoxes extends React.Component {
               >
                 Cashflow
               </p>
-              <p className="text-xl sm:text-5xl text-green-800 font-bold">$95</p>
+        <p className="text-xl sm:text-5xl text-green-800 font-bold">${this.props.income - this.props.expenses}</p>
             </div>
           </div>
         )

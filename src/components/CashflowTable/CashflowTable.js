@@ -4,6 +4,11 @@ import EditList from '../EditList/EditList';
 
 class CashflowTable extends React.Component {
 
+    constructor() {
+      super();
+      this.callBack = this.callBack.bind(this);
+    }
+
     test = [1, 2, 3, 4, 5];
 
     state = {
@@ -24,7 +29,25 @@ class CashflowTable extends React.Component {
       this.setState({listItems: this.state.listItems.concat({
         tValue: this.state.inputValue,
         aValue: this.state.amountValue
-      })})
+      })}, () => this.callBack())
+      
+    }
+
+    callBack = e => {
+      console.log("call")
+      if (this.props.label === "ASSETS") {
+        this.addIncome();
+      } else {
+        this.addExpense();
+      }
+    }
+
+    addIncome = e => {
+      this.props.onModify(this.state.listItems);
+    }
+
+    addExpense = e => {
+      this.props.onModify(this.state.listItems);
     }
 
     render() {
