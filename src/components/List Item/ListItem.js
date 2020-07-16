@@ -28,8 +28,8 @@ class ListItem extends React.Component {
       </svg>
     </div>
     <div className="flex justify-between flex-1">
-      <span className="truncate">List Item</span>
-      <span className="truncate">$000</span>
+      <span className="truncate">{this.props.text}</span>
+      <span className="truncate">${this.props.amount}</span>
     </div>
   </div>
   }
