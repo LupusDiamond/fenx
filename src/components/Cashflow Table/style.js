@@ -11,6 +11,7 @@ const styles = {
     display: "grid",
     gridTemplateColumns: "3fr 1fr 1fr",
     gap: "1rem",
+    marginTop: 50
   },
   addButton: {
     fontFamily: "Montserrat",
@@ -25,8 +26,8 @@ const styles = {
   },
   inputText: {
     color: "#2B6CB0",
-    height: "100%",
     width: "100%",
+    height: "100%",
     border: "5px solid #2C5282",
     borderRadius: 6,
     padding: 0
@@ -38,7 +39,7 @@ const styles = {
   },
   inputTextContainer: {
     position: "relative",
-    
+    height: '100%',
     boxShadow: "0px 1px 3px rgba(0, 0, 0, 0.1), 0px 1px 2px rgba(0, 0, 0, 0.06)",
   },
   inputTextLabel: {

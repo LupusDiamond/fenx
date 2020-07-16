@@ -1,8 +1,10 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import CashflowTable from "./components/Cashflow Table/CashflowTable";
-import Header from './components/Header/Header'
-import BigBox from './components/BigBox/BigBox'
+import Header from './components/Header/Header';
+import BigBox from './components/BigBox/BigBox';
+
+import './tailwind.output.css'
 
 class App extends React.Component {
   render() {
