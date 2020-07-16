@@ -11,8 +11,9 @@ const styles = {
   inputContainer: {
     width: "100%",
     display: "grid",
-    gridTemplateColumns: "4fr 1fr 1fr",
-    gap: "1.5rem",
+    gridTemplateColumns: "3fr 1fr 1fr",
+    gap: "1rem",
+    marginTop: 50
   },
   addButton: {
     fontFamily: "Montserrat",
@@ -28,35 +29,27 @@ const styles = {
   inputText: {
     color: "#2B6CB0",
     width: "100%",
-    border: "3px solid #2C5282",
+    height: "100%",
+    border: "5px solid #2C5282",
     borderRadius: 6,
     fontSize: "1.5rem",
   },
   inputAmount: {
     border: "3px solid #2C5282",
     borderRadius: 6,
-    fontSize: "1.5rem",
-    width: "100%",
+    boxShadow: "0px 1px 3px rgba(0, 0, 0, 0.1), 0px 1px 2px rgba(0, 0, 0, 0.06)",
   },
-
-  listBox: {
-    width: "100%",
-    display: "grid",
-    gridTemplateColumns: "1fr",
-    gap: "1rem",
+  inputTextContainer: {
+    position: "relative",
+    height: '100%',
+    boxShadow: "0px 1px 3px rgba(0, 0, 0, 0.1), 0px 1px 2px rgba(0, 0, 0, 0.06)",
   },
-
-  itemName: {
-  },
-  itemAmount: {
-  },
-
-  listItem: {
-    width: "100%",
-    display: "flex",
-    justifyContent: "space-between",
-    alignItems: "center",
-  },
+  inputTextLabel: {
+    position: "absolute",
+    top: 0,
+    left: 30,
+    background: "#ffffff"
+  }
 };
 
 export default styles;
