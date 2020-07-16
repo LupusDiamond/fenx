@@ -41,7 +41,12 @@ class CashflowTable extends React.Component {
           
           <button style={styles.addButton} onClick={this.onAddClick}>Add</button>
         </div>
-        
+        <div style={styles.listBox}>
+          <div styles={styles.listItem}>
+            <span style={styles.itemName}>Wowow</span>
+            <span style={styles.itemAmount}>00</span>
+          </div>
+        </div>
       </div>
     );
   }
