@@ -3,7 +3,35 @@ import styles from "./style";
 
 class ListItem extends React.Component {
   render() {
-    return <div>Placeholder</div>;
+    return <div
+    className="flex items-center text-xl text-gray-800 transition duration-100"
+  >
+
+    <div
+      className="w-6 h-6 mr-6 opacity-100 border-2 border-gray-600 text-gray-600 rounded cursor-pointer"
+    >
+      <svg
+        className="w-full h-full object-cover"
+        width="24"
+        height="24"
+        viewBox="0 0 24 24"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          d="M6 6L18 18M6 18L18 6L6 18Z"
+          stroke="currentColor"
+          stroke-width="3"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        />
+      </svg>
+    </div>
+    <div className="flex justify-between flex-1">
+      <span className="truncate">List Item</span>
+      <span className="truncate">$000</span>
+    </div>
+  </div>
   }
 }
 
