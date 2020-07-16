@@ -6,16 +6,17 @@ class CashflowTable extends React.Component {
 
     constructor() {
       super();
-      this.callBack = this.callBack.bind(this);
+      this.listChanged = this.listChanged.bind(this);
     }
-
-    test = [1, 2, 3, 4, 5];
 
     state = {
       inputValue: '',
       amountValue: '',
-      listItems: []
+      listItems: [],
+      showBoxes: false
     };
+
+    indexes = 0;
 
     onTextChange = (e) => {
       this.setState({inputValue: e.target.value});
@@ -28,27 +29,26 @@ class CashflowTable extends React.Component {
     onAddClick = (e) => {
       this.setState({listItems: this.state.listItems.concat({
         tValue: this.state.inputValue,
-        aValue: this.state.amountValue
-      })}, () => this.callBack())
+        aValue: this.state.amountValue,
+        id: ++this.indexes
+      })}, () => this.listChanged())
+    }
+
+    removeItem = e => {
+      this.setState({listItems: this.state.listItems.filter(item => item.id !== e)}, () => this.listChanged());
       
     }
 
-    callBack = e => {
-      console.log("call")
-      if (this.props.label === "ASSETS") {
-        this.addIncome();
-      } else {
-        this.addExpense();
-      }
+    listChanged = e => {
+      this.props.onModify(this.state.listItems);
+      console.log(this.state.listItems)
     }
 
-    addIncome = e => {
-      this.props.onModify(this.state.listItems);
+    showBoxes = e => {
+      console.log("show the boxes!");
+      this.setState({showBoxes: !this.state.showBoxes});
     }
 
-    addExpense = e => {
-      this.props.onModify(this.state.listItems);
-    }
 
     render() {
         return(
@@ -87,10 +87,10 @@ class CashflowTable extends React.Component {
                   </button>
                 </div>
                 <div className="grid grid-cols-1 gap-3 px-6 mb-6 sm:mb-12">
-                  {this.state.listItems.map(e => <ListItem text={e.tValue} amount={e.aValue}/>)}
+                  {this.state.listItems.map(e => <ListItem key={e.id} id={e.id} text={e.tValue} amount={e.aValue} toDelete={this.removeItem} showBox={this.state.showBoxes}/>)}
                 </div>
               </div>
-              <EditList />
+              <EditList changeClick={this.showBoxes}/>
             </div>
         )
     }

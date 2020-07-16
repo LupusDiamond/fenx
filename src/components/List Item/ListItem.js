@@ -2,12 +2,27 @@ import React from "react";
 import styles from "./style";
 
 class ListItem extends React.Component {
-  render() {
-    return <div
-    className="flex items-center text-xl text-gray-800 transition duration-100"
-  >
+  
+  state = {
+    isBoxDisplayed: true
+  }
 
-    <div
+  deleteItem = e => {
+    this.props.toDelete(this.props.id);
+  }
+
+  changeBoxDisplay = e => {
+    this.setState({isBoxDisplayed: e})
+  }
+  
+  render() {
+
+    const isBoxDisplayed = this.props.showBox;
+    let box;
+
+    if (isBoxDisplayed) {
+      box = <div
+      onClick={this.deleteItem}
       className="w-6 h-6 mr-6 opacity-100 border-2 border-gray-600 text-gray-600 rounded cursor-pointer"
     >
       <svg
@@ -26,7 +41,15 @@ class ListItem extends React.Component {
           stroke-linejoin="round"
         />
       </svg>
-    </div>
+    </div>;
+    } else box = '';
+
+    return <div
+    className="flex items-center text-xl text-gray-800 transition duration-100"
+  >
+
+    
+    {box}
     <div className="flex justify-between flex-1">
       <span className="truncate">{this.props.text}</span>
       <span className="truncate">${this.props.amount}</span>

@@ -4,7 +4,7 @@ class EditList extends React.Component {
     render() {
         return(
             <div className="w-full bg-gray-200 py-4 px-6 flex justify-end">
-                <p className="text-lg text-blue-800 cursor-pointer">
+                <p onClick={e => this.props.changeClick()} className="text-lg text-blue-800 cursor-pointer">
                   <svg
                     className="inline mr-1 w-4 h-4"
                     width="24"

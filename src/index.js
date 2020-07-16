@@ -14,7 +14,6 @@ class App extends React.Component {
   }
 
   onIncomeModified = (e) => {
-    console.log(e);
     let total = 0;
     e.forEach(element => {
       let STRtoINT = parseInt(element.aValue, 10);
