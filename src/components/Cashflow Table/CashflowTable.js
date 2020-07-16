@@ -8,8 +8,14 @@ class CashflowTable extends React.Component {
     amount: 0
   }
 
-  onAmountInputChange(e) {
+  onTextInputChange = e => {
     console.log(e.target.value);
+    this.setState({text: e.target.value});
+  }
+
+  onAmountInputChange = (e) => {
+    console.log(e.target.value);
+    this.setState({amount: e.target.value});
   }
 
   onAddClick(e) {
@@ -23,16 +29,12 @@ class CashflowTable extends React.Component {
           <div style={styles.inputTextContainer}>
             <label style={styles.inputTextLabel}>{this.props.tableTitle}</label>
           <input style={styles.inputText} className="placeholder" type="text" placeholder={this.props.placeholder}
-            onChange={e => {
-              this.setState({text: e.target.value});
-            }}
-            value={this.state.term}
+            onChange={this.onTextInputChange}
+            value={this.state.text}
           ></input>
           </div>
           <input style={styles.inputAmount} placeholder="$000" 
-            onChange={e => {
-              this.setState({amount: e.target.value});
-            }}
+            onChange={this.onAmountInputChange}
             value={this.state.amount}>
 
             </input>
