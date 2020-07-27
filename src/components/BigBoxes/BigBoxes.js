@@ -1,4 +1,5 @@
 import React from 'react';
+import {connect} from 'react-redux';
 import styles from './style'
 
 class BigBoxes extends React.Component {
@@ -44,4 +45,11 @@ class BigBoxes extends React.Component {
     }
 }
 
-export default BigBoxes;
+const mapStateToProps = (state) => {
+  return { 
+    income: state.income,
+    expenses: state.expenses
+  }
+}
+
+export default connect(mapStateToProps)(BigBoxes);

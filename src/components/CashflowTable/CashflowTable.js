@@ -1,12 +1,15 @@
 import React from 'react';
+import {connect} from 'react-redux';
 import ListItem from '../List Item/ListItem';
 import EditList from '../EditList/EditList';
+
+import {addIncome, addExpense} from '../../actions';
 
 class CashflowTable extends React.Component {
 
     constructor() {
       super();
-      this.listChanged = this.listChanged.bind(this);
+      //this.listChanged = this.listChanged.bind(this);
     }
 
     state = {
@@ -27,11 +30,18 @@ class CashflowTable extends React.Component {
     }
 
     onAddClick = (e) => {
-      this.setState({listItems: this.state.listItems.concat({
+      /*this.setState({listItems: this.state.listItems.concat({
         tValue: this.state.inputValue,
         aValue: this.state.amountValue,
         id: ++this.indexes
-      })}, () => this.listChanged())
+      })}, () => this.listChanged())*/
+
+      if (this.props.type === 'income') {
+        this.props.addIncome(parseInt(this.state.amountValue));
+      } else {
+        this.props.addExpense(parseInt(this.state.amountValue))
+      }
+
     }
 
     removeItem = e => {
@@ -39,16 +49,15 @@ class CashflowTable extends React.Component {
       
     }
 
-    listChanged = e => {
+    /*listChanged = e => {
       this.props.onModify(this.state.listItems);
       console.log(this.state.listItems)
-    }
+    }*/
 
     showBoxes = e => {
       console.log("show the boxes!");
       this.setState({showBoxes: !this.state.showBoxes});
     }
-
 
     render() {
         return(
@@ -80,7 +89,7 @@ class CashflowTable extends React.Component {
                     onChange={this.onAmountChange}
                     value={this.state.amountValue}
                   />
-                  <button onClick={this.onAddClick}
+                  <button onClick={() => this.onAddClick()}
                     className="bg-blue-800 text-white text-xl py-2 px-4 rounded-lg focus:outline-none focus:shadow-outline col-start-1 col-end-6 sm:col-start-5 sm:col-end-6"
                   >
                     Add
@@ -96,4 +105,10 @@ class CashflowTable extends React.Component {
     }
 }
 
-export default CashflowTable;
+const mapStateToProps = (state) => {
+  return {};
+}
+
+export default connect(mapStateToProps, {
+  addIncome, addExpense
+})(CashflowTable);
