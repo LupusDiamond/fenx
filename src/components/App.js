@@ -4,6 +4,7 @@ import {BrowserRouter, Route} from 'react-router-dom';
 // Pages
 import Landing from './Landing';
 import Dashboard from './Dashboard';
+import Vaults from './Vaults';
 
 class App extends Component {
 
@@ -44,6 +45,7 @@ class App extends Component {
             <div>
                 <Route path='/' exact component={Landing}/>
                 <Route path="/dashboard" component={Dashboard}/>
+                <Route path="/vaults" component={Vaults}/>
             </div>   
             </BrowserRouter>
         </div>
