@@ -1,25 +1,18 @@
-import React from 'react';
+import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import ListItem from '../List Item/ListItem';
 import EditList from '../EditList/EditList';
 
-import {addIncome, addExpense} from '../../actions';
+import {addIncome, addExpense, addIncomeItem, addExpenseItem, removeExpensesItem, removeIncomeItem} from '../../actions';
 
-class CashflowTable extends React.Component {
-
-    constructor() {
-      super();
-      //this.listChanged = this.listChanged.bind(this);
-    }
+class CashflowTable extends Component {
 
     state = {
       inputValue: '',
       amountValue: '',
-      listItems: [],
+      counter: 0,
       showBoxes: false
     };
-
-    indexes = 0;
 
     onTextChange = (e) => {
       this.setState({inputValue: e.target.value});
@@ -30,30 +23,27 @@ class CashflowTable extends React.Component {
     }
 
     onAddClick = (e) => {
-      /*this.setState({listItems: this.state.listItems.concat({
-        tValue: this.state.inputValue,
-        aValue: this.state.amountValue,
-        id: ++this.indexes
-      })}, () => this.listChanged())*/
-
       if (this.props.type === 'income') {
         this.props.addIncome(parseInt(this.state.amountValue));
+        this.props.addIncomeItem(this.state.counter,this.state.inputValue, parseInt(this.state.amountValue));
+        this.setState({counter: ++this.state.counter})
       } else {
         this.props.addExpense(parseInt(this.state.amountValue))
+        this.props.addExpenseItem(this.state.counter, this.state.inputValue, parseInt(this.state.amountValue));
+        this.setState({counter: ++this.state.counter});
       }
-
     }
 
+    renderList = () => {
+      return this.props.listItems.map(e => <ListItem key={e.id} id={e.id} text={e.name} amount={e.amount} toDelete={this.removeItem} showBox={this.state.showBoxes}/>)
+    }
     removeItem = e => {
-      this.setState({listItems: this.state.listItems.filter(item => item.id !== e)}, () => this.listChanged());
-      
+      if (this.props.type === 'income') {
+        this.props.removeIncomeItem(e)
+      } else {
+        this.props.removeExpensesItem(e);
+      }
     }
-
-    /*listChanged = e => {
-      this.props.onModify(this.state.listItems);
-      console.log(this.state.listItems)
-    }*/
-
     showBoxes = e => {
       console.log("show the boxes!");
       this.setState({showBoxes: !this.state.showBoxes});
@@ -96,7 +86,7 @@ class CashflowTable extends React.Component {
                   </button>
                 </div>
                 <div className="grid grid-cols-1 gap-3 px-6 mb-6 sm:mb-12">
-                  {this.state.listItems.map(e => <ListItem key={e.id} id={e.id} text={e.tValue} amount={e.aValue} toDelete={this.removeItem} showBox={this.state.showBoxes}/>)}
+                  {this.renderList()}
                 </div>
               </div>
               <EditList changeClick={this.showBoxes}/>
@@ -105,10 +95,11 @@ class CashflowTable extends React.Component {
     }
 }
 
-const mapStateToProps = (state) => {
-  return {};
+const mapStateToProps = (state, ownProps) => {
+  const list = ownProps.type === 'income' ? state.incomeList : state.expensesList;
+  return { listItems: list };
 }
 
 export default connect(mapStateToProps, {
-  addIncome, addExpense
+  addIncome, addExpense, addIncomeItem, addExpenseItem, removeExpensesItem, removeIncomeItem
 })(CashflowTable);
