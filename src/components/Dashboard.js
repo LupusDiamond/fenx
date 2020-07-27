@@ -1,9 +1,9 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
 
-import Header from './Header/Header';
-import BigBoxes from './BigBoxes/BigBoxes';
-import CashflowTable from "./CashflowTable/CashflowTable";
+import Header from './Header';
+import BigBoxes from './BigBoxes';
+import CashflowTable from "./CashflowTable";
 
 class Dashboard extends Component {
     render() {

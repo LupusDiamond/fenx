@@ -1,9 +1,9 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
-import ListItem from '../List Item/ListItem';
-import EditList from '../EditList/EditList';
+import ListItem from './ListItem';
+import EditList from './EditList';
 
-import {addIncome, addExpense, addIncomeItem, addExpenseItem, removeExpensesItem, removeIncomeItem} from '../../actions';
+import {addIncome, addExpense, addIncomeItem, addExpenseItem, removeExpensesItem, removeIncomeItem} from '../actions';
 
 class CashflowTable extends Component {
 

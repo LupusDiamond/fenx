@@ -1,8 +1,7 @@
-import React from 'react';
+import React, {Component} from 'react';
 import {connect} from 'react-redux';
-import styles from './style'
 
-class BigBoxes extends React.Component {
+class BigBoxes extends Component {
     render() {
         return (
             <div

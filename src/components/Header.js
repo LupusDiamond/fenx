@@ -1,6 +1,5 @@
 import React from 'react';
-import styles from "./style";
-import '../../assets/tailwind.css'
+import '../assets/tailwind.css'
 
 class Header extends React.Component {
     render() {
