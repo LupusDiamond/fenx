@@ -1,29 +1,37 @@
-import React from 'react';
-import '../assets/tailwind.css'
+import React from "react";
+import "../assets/tailwind.css";
 
 class Header extends React.Component {
-    render() {
-        return(
-        <header className="w-full bg-blue-800 shadow-lg mb-6">
-        <div
-            className="max-w-6xl w-full mx-auto px-6 py-3 flex justify-between items-center"
-        >
-            <div className="logo flex flex-col">
+  render() {
+    return (
+      <header className="w-full bg-gray-900 shadow-lg mb-6">
+        <div className="max-w-6xl w-full mx-auto px-6 py-3 flex justify-between items-center">
+          <div className="logo flex flex-col">
             <p className="text-4xl text-white -ml-px">FenX</p>
-            <p
-                className="text-xs uppercase text-indigo-200 -mt-1 mb-2 tracking-wider"
+            <p className="text-xs uppercase text-indigo-200 -mt-1 mb-2 tracking-wider">
+              The Financial Manager
+            </p>
+          </div>
+            <svg
+              className="h-10 text-white cursor-pointer"
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
             >
-                The Financial Manager
-            </p>
-            </div>
-            <p className="w-32 text-indigo-200 text-sm pl-3">
-            Made with 💙 by <span className="text-white">Rishi</span> &
-            <span className="text-white">Alex</span>.
-            </p>
+              <path
+                d="M13 18H20M4 6H20H4ZM4 12H20H4Z"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
+            </svg>
         </div>
-        </header>
-        )
-    }
+      </header>
+    );
+  }
 }
 
 export default Header;
