@@ -5,7 +5,15 @@ import Header from './Header';
 import BigBoxes from './BigBoxes';
 import CashflowTable from "./CashflowTable";
 
+import discord from '../apis/discord';
+import axios from 'axios';
+
 class Dashboard extends Component {
+
+    discordClick = async () => {
+      const response = await axios.get("http://localhost:4000/discord");
+      console.log(response);
+    }
     render() {
       return (
         <div className="bg-gray-200 min-h-screen">
@@ -16,6 +24,7 @@ class Dashboard extends Component {
               <CashflowTable label="ASSETS" type="income"/>
               <CashflowTable label="LIABILITIES" type="expenses"/>
             </div>
+            <button onClick={() => this.discordClick()}>Click me!</button>
             </main>
         </div>
       );
