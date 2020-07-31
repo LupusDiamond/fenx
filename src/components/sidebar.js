@@ -1,7 +1,36 @@
 import React from "react";
+import {connect} from 'react-redux';
 import "../assets/tailwind.css";
+import {signOut, signIn} from '../actions';
+
+import GoogleAuth from './GoogleAuth';
+import Cross from "../assets/svgs/Cross";
+
 
 class SideBar extends React.Component {
+
+  componentDidMount() {
+    this.auth = window.gapi.auth2.getAuthInstance();
+    this.onAuthChange(this.auth.isSignedIn.get());
+    this.auth.isSignedIn.listen(this.onAuthChange);
+  }
+
+  onAuthChange = (isSignedIn) => {
+    if (isSignedIn) {
+        this.props.signIn(this.auth.currentUser.get().getId());
+    } else {
+        this.props.signOut();
+    }
+  }
+
+  onSignInClick = () => {
+      this.auth.signIn();
+  }
+
+  onSignOutClick = () => {
+      this.auth.signOut();
+  }
+
   render() {
       return (
         <div className="fixed w-full top-0 right-0 h-screen">
@@ -9,23 +38,7 @@ class SideBar extends React.Component {
 
           <div className="fixed max-w-xs w-full top-0 right-0 h-screen bg-gray-900 p-8 z-20 flex flex-col justify-between items-center">
             <div className="relative w-full flex flex-col">
-              <svg
-                className="h-8 w-8 absolute top-0 left-0 text-white"
-                width="24"
-                height="24"
-                viewBox="0 0 24 24"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <path
-                  d="M6 6L18 18M6 18L18 6L6 18Z"
-                  stroke="currentColor"
-                  stroke-width="2"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                />
-              </svg>
-
+              <Cross />
               <div className="mt-24 w-32 h-32 bg-white rounded-full overflow-hidden mx-auto mb-4"></div>
               <p className="textbase md:text-xl text-white mx-auto mb-8 lg:mb-16">
                 Tepes Alexandru
@@ -53,16 +66,24 @@ class SideBar extends React.Component {
               </div>
             </div>
 
-            <a
-              href="#"
-              className="text-red-500 font-semibold text-base md:text-xl"
-            >
+            <GoogleAuth signOutComponent={
+              <p 
+                className="text-red-500 font-semibold text-base md:text-xl"
+              >
               Log Out
-            </a>
+            </p>
+            }/>
+            
           </div>
         </div>
       );
   }
 }
 
-export default SideBar;
+const mapStateToProps = (state) => {
+  return {isSignedIn: state.auth.isSignedIn};
+}
+
+export default connect(mapStateToProps, {
+  signOut, signIn
+})(SideBar);

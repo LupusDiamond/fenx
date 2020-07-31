@@ -5,7 +5,7 @@ import Header from './Header';
 import BigBoxes from './BigBoxes';
 import CashflowTable from "./CashflowTable";
 import { Redirect } from 'react-router-dom';
-import SideBar from './sidebar';
+import SideBar from './Sidebar';
 
 class Dashboard extends Component {
     render() {

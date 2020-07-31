@@ -22,11 +22,11 @@ class GoogleAuth extends Component {
             return null;
         } else if (this.props.isSignedIn) {
             return (
-                <button onClick={this.onSignOutClick}>Sign Out</button>
+            <div className={this.props.className} onClick={this.onSignOutClick}>{this.props.signOutComponent}</div>
             )
         } else {
             return (
-                <button onClick={this.onSignInClick}>Continue with Google</button>
+            <div className={this.props.className} onClick={this.onSignInClick}>{this.props.signInComponent}</div>
             )
         }
     }
