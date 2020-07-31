@@ -4,17 +4,15 @@ import {connect} from 'react-redux';
 import Header from './Header';
 import BigBoxes from './BigBoxes';
 import CashflowTable from "./CashflowTable";
-
-import discord from '../apis/discord';
-import axios from 'axios';
+import { Redirect } from 'react-router-dom';
 
 class Dashboard extends Component {
-
-    discordClick = async () => {
-      const response = await axios.get("http://localhost:4000/discord");
-      console.log(response);
-    }
     render() {
+
+      if (!this.props.isSignedIn) {
+        return <Redirect to="/"/>
+      }
+
       return (
         <div className="bg-gray-200 min-h-screen">
             <Header />
@@ -24,7 +22,6 @@ class Dashboard extends Component {
               <CashflowTable label="ASSETS" type="income"/>
               <CashflowTable label="LIABILITIES" type="expenses"/>
             </div>
-            <button onClick={() => this.discordClick()}>Click me!</button>
             </main>
         </div>
       );
@@ -34,7 +31,8 @@ class Dashboard extends Component {
   const mapStateToProps = (state) => {
     return { 
       income: state.income,
-      expenses: state.expenses
+      expenses: state.expenses,
+      isSignedIn: state.auth.isSignedIn
     }
   }
 

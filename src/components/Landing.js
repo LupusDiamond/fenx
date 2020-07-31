@@ -1,7 +1,16 @@
 import React from 'react';
-import {BrowserRouter, Link} from 'react-router-dom';
+import {BrowserRouter, Link, Redirect} from 'react-router-dom';
+import {connect} from 'react-redux';
 
-const Landing = () => {
+import './Landing.css';
+import GoogleAuth from './GoogleAuth';
+
+const Landing = (props) => {
+
+    if (props.isSignedIn) {
+      return <Redirect to="/dashboard" />
+    }
+
     return (
         <div className="relative w-full min-h-screen bg-gray-900 text-white flex flex-col justify-between">
             <main class="w-full max-w-screen-xl mx-auto mb-8 py-4 md:py-8">
@@ -53,7 +62,7 @@ const Landing = () => {
               href="#"
               class="flex items-center overflow-hidden rounded-md bg-white text-gray-900"
             >
-              <p class="py-2 px-6 md:py-4 font-bold"><a href="https://discordfenx.herokuapp.com/auth">Login with Discord</a></p>
+              <p class="py-2 px-6 md:py-4 font-bold"><GoogleAuth /></p>
               <div class="bg-gray-300 p-4 h-full flex items-center">
                 <svg
                   class="h-6 w-6 flex-shrink-0"
@@ -115,4 +124,8 @@ const Landing = () => {
     )
 }
 
-export default Landing;
+const mapStateToProps = (state) => {
+    return {isSignedIn: state.auth.isSignedIn};
+}
+
+export default connect(mapStateToProps)(Landing);

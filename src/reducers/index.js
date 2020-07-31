@@ -1,4 +1,5 @@
 import {combineReducers} from 'redux';
+import authReducer from './authReducer';
 
 const incomeReducer = (amount = 0, action) => {
     switch (action.type) {
@@ -44,5 +45,6 @@ export default combineReducers({
     income: incomeReducer,
     expenses: expenseReducer,
     incomeList: incomeListReducer,
-    expensesList: expenseListReducer
+    expensesList: expenseListReducer,
+    auth: authReducer
 })
