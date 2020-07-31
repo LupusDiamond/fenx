@@ -26,7 +26,7 @@ class GoogleAuth extends Component {
             )
         } else {
             return (
-                <button onClick={this.onSignInClick}>Sign In</button>
+                <button onClick={this.onSignInClick}>Continue with Google</button>
             )
         }
     }

@@ -5,6 +5,7 @@ import Header from './Header';
 import BigBoxes from './BigBoxes';
 import CashflowTable from "./CashflowTable";
 import { Redirect } from 'react-router-dom';
+import SideBar from './sidebar';
 
 class Dashboard extends Component {
     render() {
@@ -22,7 +23,8 @@ class Dashboard extends Component {
               <CashflowTable label="ASSETS" type="income"/>
               <CashflowTable label="LIABILITIES" type="expenses"/>
             </div>
-            </main>
+          </main>
+          <SideBar/>
         </div>
       );
     }

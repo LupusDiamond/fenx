@@ -8,7 +8,7 @@ class Header extends React.Component {
         <div className="max-w-6xl w-full mx-auto px-6 py-3 flex justify-between items-center">
           <div className="logo flex flex-col">
             <p className="text-4xl text-white -ml-px">FenX</p>
-            <p className="text-xs uppercase text-indigo-200 -mt-1 mb-2 tracking-wider">
+            <p className="text-xs uppercase text-gray-200 -mt-1 mb-2 tracking-wider">
               The Financial Manager
             </p>
           </div>
