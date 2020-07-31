@@ -79,7 +79,7 @@ class CashflowTable extends Component {
           <div className="grid grid-cols-5 gap-2 p-6">
             <div className="relative col-start-1 col-end-4">
               <label
-                for="Assets"
+                htmlFor="Assets"
                 className="text-xs md:text-sm bg-white uppercase text-gray-900 px-2 ml-3 absolute top-0 left-0 transform -translate-y-1/2"
               >
                 {this.props.label}
