@@ -1,7 +1,10 @@
 import React from 'react'
 
-const Vaults = () => {
-    return <div>Vaults</div>
+class Vaults extends React.Component {
+    render() {
+        return <div>Vaults</div>
+    }
+    
 }
 
 export default Vaults;

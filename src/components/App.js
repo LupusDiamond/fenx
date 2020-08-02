@@ -5,6 +5,7 @@ import {BrowserRouter, Route} from 'react-router-dom';
 import Landing from './Landing';
 import Dashboard from './Dashboard';
 import Vaults from './Vaults';
+import Revenues from './Revenues';
 
 class App extends Component {
     render() {
@@ -16,6 +17,7 @@ class App extends Component {
                 <Route path='/' exact component={Landing}/>
                 <Route path="/dashboard" component={Dashboard}/>
                 <Route path="/vaults" component={Vaults}/>
+                <React path="/revenues" component={Revenues} />
             </div>   
             </BrowserRouter>
         </div>
