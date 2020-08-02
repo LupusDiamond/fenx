@@ -34,9 +34,9 @@ class ListItem extends React.Component {
             <path
               d="M6 6L18 18M6 18L18 6L6 18Z"
               stroke="currentColor"
-              stroke-width="3"
-              stroke-linecap="round"
-              stroke-linejoin="round"
+              strokeWidth="3"
+              strokeLinecap="round"
+              strokeLinejoin="round"
             />
           </svg>
         </div>
