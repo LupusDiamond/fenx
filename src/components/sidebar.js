@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useRef, createRef } from "react";
 import {connect} from 'react-redux';
 import "../assets/tailwind.css";
 import {signOut, signIn} from '../actions';
@@ -6,13 +6,40 @@ import {signOut, signIn} from '../actions';
 import GoogleAuth from './GoogleAuth';
 import Cross from "../assets/svgs/Cross";
 
+import {hideSidebar} from '../actions';
+
 
 class SideBar extends React.Component {
 
+  constructor() {
+    super();
+    this.ref = createRef();
+  }
+
+  onBodyClick = (event) => {
+    if (this.ref.current !== null) {
+      console.log(this.ref);
+      if (this.ref.current.contains(event.target)) {
+        return;
+      }
+    } 
+    console.log(this.ref);
+    this.props.hideSidebar();
+  }
+
+  componentWillMount() {
+    document.body.addEventListener("click", this.onBodyClick);
+  }
+
   componentDidMount() {
+    console.log("jii");
     this.auth = window.gapi.auth2.getAuthInstance();
     this.onAuthChange(this.auth.isSignedIn.get());
     this.auth.isSignedIn.listen(this.onAuthChange);
+  }
+
+  componentWillUnmount() {
+    document.body.removeEventListener("click", this.onBodyClick);
   }
 
   onAuthChange = (isSignedIn) => {
@@ -32,13 +59,16 @@ class SideBar extends React.Component {
   }
 
   render() {
+    //console.log("this is the sidebar");
+    //console.log(this.props.showSidebar);
+      if (!this.props.showSidebar) return null;
       return (
-        <div className="fixed w-full top-0 right-0 h-screen">
+        <div  className="fixed w-full top-0 right-0 h-screen">
           <div className="fixed w-full h-full bg-black bg-opacity-50 z-10"></div>
 
-          <div className="fixed max-w-xs w-full top-0 right-0 h-screen bg-gray-900 p-8 z-20 flex flex-col justify-between items-center">
-            <div className="relative w-full flex flex-col">
-              <Cross />
+          <div ref={this.ref} className="fixed max-w-xs w-full top-0 right-0 h-screen bg-gray-900 p-8 z-20 flex flex-col justify-between items-center">
+            <div  className="relative w-full flex flex-col">
+              <Cross/>
               <div className="mt-24 w-32 h-32 bg-white rounded-full overflow-hidden mx-auto mb-4"></div>
               <p className="textbase md:text-xl text-white mx-auto mb-8 lg:mb-16">
                 Tepes Alexandru
@@ -81,9 +111,12 @@ class SideBar extends React.Component {
 }
 
 const mapStateToProps = (state) => {
-  return {isSignedIn: state.auth.isSignedIn};
+  return {
+    isSignedIn: state.auth.isSignedIn,
+    showSidebar: state.showSidebar
+  };
 }
 
 export default connect(mapStateToProps, {
-  signOut, signIn
+  signOut, signIn, hideSidebar
 })(SideBar);

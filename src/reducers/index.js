@@ -41,10 +41,24 @@ const expenseListReducer = (oldList = [], action) => {
     }
 }
 
+const sideBarReducer = (show = false, action) => {
+    switch (action.type) {
+        case 'HIDE_SIDEBAR':
+            show = false;
+            return show;
+        case 'SHOW_SIDEBAR':
+            show = true;
+            return show;
+        default:
+            return show;
+    }
+}
+
 export default combineReducers({
     income: incomeReducer,
     expenses: expenseReducer,
     incomeList: incomeListReducer,
     expensesList: expenseListReducer,
-    auth: authReducer
+    auth: authReducer,
+    showSidebar: sideBarReducer
 })

@@ -55,3 +55,15 @@ export const signOut = () => {
         type: 'SIGN_OUT'
     }
 }
+
+export const hideSidebar = () => {
+    return {
+        type: 'HIDE_SIDEBAR'
+    }
+}
+
+export const showSidebar = () => {
+    return {
+        type: 'SHOW_SIDEBAR'
+    }
+}

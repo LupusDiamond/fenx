@@ -8,12 +8,20 @@ import { Redirect } from 'react-router-dom';
 import SideBar from './Sidebar';
 
 class Dashboard extends Component {
+
+    showSidebar = () => {
+      console.log(this.props.showSidebar);
+      if (!this.props.showSidebar) {
+        return null;
+      }
+      return <SideBar />
+    }
+
     render() {
 
       if (!this.props.isSignedIn) {
         return <Redirect to="/"/>
       }
-
       return (
         <div className="bg-gray-200 min-h-screen">
             <Header />
@@ -24,7 +32,7 @@ class Dashboard extends Component {
               <CashflowTable label="LIABILITIES" type="expenses"/>
             </div>
           </main>
-          <SideBar/>
+          {this.showSidebar()}
         </div>
       );
     }
@@ -34,7 +42,8 @@ class Dashboard extends Component {
     return { 
       income: state.income,
       expenses: state.expenses,
-      isSignedIn: state.auth.isSignedIn
+      isSignedIn: state.auth.isSignedIn,
+      showSidebar: state.showSidebar
     }
   }
 

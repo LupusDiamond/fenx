@@ -1,6 +1,10 @@
 import React from "react";
 import "../assets/tailwind.css";
 
+import {showSidebar} from '../actions';
+
+import {connect} from 'react-redux';
+
 class Header extends React.Component {
   render() {
     return (
@@ -12,7 +16,10 @@ class Header extends React.Component {
               The Financial Manager
             </p>
           </div>
-            <svg
+            <svg onClick={() => {
+              console.log(this.props);
+              this.props.showSidebar()
+            }}
               className="h-10 text-white cursor-pointer"
               width="24"
               height="24"
@@ -34,4 +41,6 @@ class Header extends React.Component {
   }
 }
 
-export default Header;
+export default connect(null, {
+  showSidebar
+})(Header);
