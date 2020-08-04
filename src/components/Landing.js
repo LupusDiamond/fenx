@@ -8,8 +8,10 @@ import GoogleIcon from "../assets/svgs/GoogleIcon";
 import FenXLogo from "../assets/svgs/FenXLogo";
 import Footer from "./Footer";
 import GoogleLoginButton from "./GoogleLoginButton";
+import {hideSidebar} from '../actions';
 
 const Landing = (props) => {
+  props.hideSidebar();
   if (props.isSignedIn) {
     return <Redirect to="/dashboard" />;
   }
@@ -47,4 +49,6 @@ const mapStateToProps = (state) => {
   return { isSignedIn: state.auth.isSignedIn };
 };
 
-export default connect(mapStateToProps)(Landing);
+export default connect(mapStateToProps, {
+  hideSidebar
+})(Landing);

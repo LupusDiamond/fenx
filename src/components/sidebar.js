@@ -19,12 +19,10 @@ class SideBar extends React.Component {
 
   onBodyClick = (event) => {
     if (this.ref.current !== null) {
-      console.log(this.ref);
       if (this.ref.current.contains(event.target)) {
         return;
       }
     } 
-    console.log(this.ref);
     this.props.hideSidebar();
   }
 
@@ -68,9 +66,10 @@ class SideBar extends React.Component {
           <div ref={this.ref} className="fixed max-w-xs w-full top-0 right-0 h-screen bg-gray-900 p-8 z-20 flex flex-col justify-between items-center">
             <div className="relative w-full flex flex-col">
               <Cross />
-              <div className="mt-24 w-32 h-32 bg-white rounded-full overflow-hidden mx-auto mb-4"></div>
+              <img className="mt-24 w-32 h-32 bg-white rounded-full overflow-hidden mx-auto mb-4" src={this.props.profilePicture} />
+              
               <p className="textbase md:text-xl text-white mx-auto mb-8 lg:mb-16">
-                Tepes Alexandru
+                {this.props.username}
               </p>
               <div className="w-full grid grid-cols-1 gap-4 text-white text-left text-lg md:text-2xl font-semibold pl-1">
                 <SideBarLink destination="/" text="Dashboard"/>
@@ -95,7 +94,9 @@ class SideBar extends React.Component {
 const mapStateToProps = (state) => {
   return {
     isSignedIn: state.auth.isSignedIn,
-    showSidebar: state.showSidebar
+    showSidebar: state.showSidebar,
+    username: state.auth.username,
+    profilePicture: state.auth.profilePicture
   };
 }
 

@@ -44,10 +44,12 @@ export const removeIncomeItem = (id) => {
     }
 }
 
-export const signIn = (userId) => {
+export const signIn = (userId, username, profilePicture) => {
     return {
         type: 'SIGN_IN',
-        payload: userId
+        payload: {
+            userId, username, profilePicture
+        }
     }
 }
 

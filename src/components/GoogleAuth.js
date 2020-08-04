@@ -8,9 +8,11 @@ class GoogleAuth extends Component {
         window.gapi.load('client:auth2', () => {
             window.gapi.client.init({
                 clientId: '265605334965-a4eqldriumv3acu57cujeodglr034uhg.apps.googleusercontent.com',
-                scope: 'email'
+                scope: "email profile"
             }).then(() => {
                 this.auth = window.gapi.auth2.getAuthInstance();
+                this.currentUser = this.auth.currentUser.get().getBasicProfile();
+                console.log(this.currentUser);
                 this.onAuthChange(this.auth.isSignedIn.get());
                 this.auth.isSignedIn.listen(this.onAuthChange);
             })
@@ -33,7 +35,7 @@ class GoogleAuth extends Component {
 
     onAuthChange = (isSignedIn) => {
         if (isSignedIn) {
-            this.props.signIn(this.auth.currentUser.get().getId());
+            this.props.signIn(this.auth.currentUser.get().getId(), this.currentUser.getName(), this.currentUser.getImageUrl());
         } else {
             this.props.signOut();
         }
