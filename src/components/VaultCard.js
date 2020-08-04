@@ -28,7 +28,7 @@ const VaultCard = ({label, amount}) => {
     }
 
     return (
-        <div className="bg-gray-900 rounded-lg shadow-lg overflow-hidden">
+        <div   className="bg-gray-900 rounded-lg shadow-lg overflow-hidden">
             <div className="image-box w-full relative bg-white" style={{paddingTop: '56.25%'}}>
               <img className="absolute top-0 left-0 w-full h-full object-center object-cover" src={require("../assets/images/tepes.jpg")} alt="vault-item" />
               <div className="absolute top-0 left-0">
@@ -37,11 +37,13 @@ const VaultCard = ({label, amount}) => {
                   <img src={require("../assets/images/red-heart.svg")} alt="heart" className="h-6 w-6 animate-ping" />
                 </div>
               </div>
-              <div className="absolute top-0 right-0">
-                <div className="relative">
-                  <button onClick={() => {
-                      setShowOptions(!showOptions);
-                  }}>
+              <div onMouseEnter={() => {
+          setShowOptions(true);
+      }} onMouseLeave={() => {
+        setShowOptions(false)
+      }} className="absolute top-0 right-0">
+                <div  className="relative">
+                  <button >
                     <img className="focus:outline-none mr-4" src={require("../assets/images/dots.svg")} alt="dots" />
                   </button>
                   {renderOptions()}

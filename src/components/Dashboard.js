@@ -5,8 +5,6 @@ import CashflowTable from "./CashflowTable";
 
 class Dashboard extends Component {
     render() {
-
-      
       return (
         <div className="bg-gray-200 min-h-screen">
             <main className="max-w-6xl w-full mx-auto px-6">
@@ -25,7 +23,6 @@ class Dashboard extends Component {
     return { 
       income: state.income,
       expenses: state.expenses,
-      
     }
   }
 
