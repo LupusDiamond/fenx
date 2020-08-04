@@ -1,30 +1,14 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
-
-import Header from './Header';
 import BigBoxes from './BigBoxes';
 import CashflowTable from "./CashflowTable";
-import { Redirect } from 'react-router-dom';
-import SideBar from './Sidebar';
 
 class Dashboard extends Component {
-
-    showSidebar = () => {
-      console.log(this.props.showSidebar);
-      if (!this.props.showSidebar) {
-        return null;
-      }
-      return <SideBar />
-    }
-
     render() {
 
-      if (!this.props.isSignedIn) {
-        return <Redirect to="/"/>
-      }
+      
       return (
         <div className="bg-gray-200 min-h-screen">
-            <Header />
             <main className="max-w-6xl w-full mx-auto px-6">
             <BigBoxes/>
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-6">
@@ -32,7 +16,6 @@ class Dashboard extends Component {
               <CashflowTable label="LIABILITIES" type="expenses"/>
             </div>
           </main>
-          {this.showSidebar()}
         </div>
       );
     }
@@ -42,8 +25,7 @@ class Dashboard extends Component {
     return { 
       income: state.income,
       expenses: state.expenses,
-      isSignedIn: state.auth.isSignedIn,
-      showSidebar: state.showSidebar
+      
     }
   }
 
