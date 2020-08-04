@@ -1,9 +1,20 @@
-import {combineReducers} from 'redux';
-import authReducer from './authReducer';
+import {combineReducers} from "redux";
+import authReducer from "./authReducer";
+
+import {
+    ADD_INCOME,
+    ADD_EXPENSE,
+    ADD_INCOME_ITEM,
+    REMOVE_INCOME_ITEM,
+    ADD_EXPENSE_ITEM,
+    REMOVE_EXPENSE_ITEM,
+    HIDE_SIDEBAR,
+    SHOW_SIDEBAR
+} from "../actions/types";
 
 const incomeReducer = (amount = 0, action) => {
     switch (action.type) {
-        case 'ADD_INCOME':
+        case ADD_INCOME:
             return amount + action.payload;
         default:
             return amount;
@@ -12,7 +23,7 @@ const incomeReducer = (amount = 0, action) => {
 
 const expenseReducer = (amount = 0, action) => {
     switch (action.type) {
-        case 'ADD_EXPENSE':
+        case ADD_EXPENSE:
             return amount + action.payload;
         default:
             return amount;
@@ -21,9 +32,9 @@ const expenseReducer = (amount = 0, action) => {
 
 const incomeListReducer = (oldList = [], action) => {
     switch (action.type) {
-        case 'ADD_INCOME_ITEM':
+        case ADD_INCOME_ITEM:
             return [...oldList, action.payload];
-        case 'REMOVE_INCOME_ITEM':
+        case REMOVE_INCOME_ITEM:
             return oldList.filter(item => item.id != action.payload);
         default:
             return oldList;
@@ -32,9 +43,9 @@ const incomeListReducer = (oldList = [], action) => {
 
 const expenseListReducer = (oldList = [], action) => {
     switch (action.type) {
-        case 'ADD_EXPENSE_ITEM':
+        case ADD_EXPENSE_ITEM:
             return [...oldList, action.payload];
-        case 'REMOVE_EXPENSE_ITEM':
+        case REMOVE_EXPENSE_ITEM:
             return oldList.filter(item => item.id != action.payload);
         default:
             return oldList;
@@ -43,10 +54,10 @@ const expenseListReducer = (oldList = [], action) => {
 
 const sideBarReducer = (show = false, action) => {
     switch (action.type) {
-        case 'HIDE_SIDEBAR':
+        case HIDE_SIDEBAR:
             show = false;
             return show;
-        case 'SHOW_SIDEBAR':
+        case SHOW_SIDEBAR:
             show = true;
             return show;
         default:
