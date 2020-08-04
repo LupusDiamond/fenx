@@ -17,7 +17,7 @@ class App extends Component {
                 <Route path='/' exact component={Landing}/>
                 <Route path="/dashboard" component={Dashboard}/>
                 <Route path="/vaults" component={Vaults}/>
-                <React path="/revenues" component={Revenues} />
+                <Route path="/revenues" component={Revenues} />
             </div>   
             </BrowserRouter>
         </div>
