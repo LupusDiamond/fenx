@@ -50,7 +50,7 @@ const VaultCard = ({label, amount}) => {
                 </div>
               </div>
             </div>
-            <div className="flex justify-between py-2 px-4 text-white font-normal">
+            <div className="flex justify-between py-2 px-6 text-white font-normal">
               <p className="truncate">{label}</p>
               <p className="ml-2 truncate w-24 text-right">{amount}$</p>
             </div>

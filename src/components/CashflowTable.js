@@ -103,7 +103,7 @@ class CashflowTable extends Component {
             />
             <button
               onClick={() => this.onAddClick()}
-              className="bg-gray-900 text-white text-base md:text-xl py-2 px-4 rounded-lg focus:outline-none focus:shadow-outline col-start-1 col-end-6 sm:col-start-5 sm:col-end-6"
+              className="bg-gray-900 text-white text-base md:text-xl py-2 px-6 rounded-lg focus:outline-none focus:shadow-outline col-start-1 col-end-6 sm:col-start-5 sm:col-end-6"
             >
               Add
             </button>

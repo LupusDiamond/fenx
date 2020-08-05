@@ -18,7 +18,7 @@ class BigBoxes extends Component {
           <p className="text-base sm:text-sm text-gray-600 uppercase tracking-wider">
             Expenses
           </p>
-          <p className="text-xl sm:text-4xl text-yellow-800 font-bold">
+          <p className="text-xl sm:text-4xl text-pink-800 font-bold">
             ${this.props.expenses || 0}
           </p>
         </div>
