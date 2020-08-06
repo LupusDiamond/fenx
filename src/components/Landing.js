@@ -31,7 +31,7 @@ const Landing = (props) => {
 
           <div className="w-full px-8 md:px-16lg:pl-8">
             <h1 className="text-3xl lg:text-5xl leading-snug md:leading-tight font-semibold mb-4">
-              A Brand new way to <span className="italic">SEE</span> your money.
+              A brand new way to <span className="italic">SEE</span> your money.
             </h1>
             <p className="text-gray-500 text-sm lg:text-lg font-normal max-w-md tracking-wide mb-8">
               See your monthly expenses, income and cashflow, all at one place.
