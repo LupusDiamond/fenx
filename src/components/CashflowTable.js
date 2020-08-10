@@ -34,7 +34,8 @@ class CashflowTable extends Component {
       this.props.addIncomeItem(
         this.state.counter,
         this.state.inputValue,
-        parseInt(this.state.amountValue)
+        parseInt(this.state.amountValue),
+        this.props.userId
       );
       this.setState({ counter: ++this.state.counter });
     } else {
@@ -42,7 +43,8 @@ class CashflowTable extends Component {
       this.props.addExpenseItem(
         this.state.counter,
         this.state.inputValue,
-        parseInt(this.state.amountValue)
+        parseInt(this.state.amountValue),
+        this.props.userId
       );
       this.setState({ counter: ++this.state.counter });
     }
@@ -121,7 +123,7 @@ class CashflowTable extends Component {
 const mapStateToProps = (state, ownProps) => {
   const list =
     ownProps.type === "income" ? state.incomeList : state.expensesList;
-  return { listItems: list };
+  return { listItems: list, userId: state.auth.userId };
 };
 
 export default connect(mapStateToProps, {

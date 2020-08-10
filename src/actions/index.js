@@ -11,6 +11,8 @@ import {
     SHOW_SIDEBAR,
 } from "./types";
 
+import server from '../apis/server';
+
 
 export const addIncome = (amount) => {
     return {
@@ -26,22 +28,32 @@ export const addExpense = (amount) => {
     }
 }
 
-export const addIncomeItem = (id, name, amount) => {
-    return {
+export const addIncomeItem = (id, name, amount, userId) => async dispatch =>{
+    await server.post(`/dashboard/${userId}`, {
+        "label": name,
+        "amount": amount,
+        "listType": "ASSETS"
+    });
+    return dispatch({
         type: ADD_INCOME_ITEM,
         payload: {
             id, name, amount
         }
-    }
+    });
 }
 
-export const addExpenseItem = (id, name, amount) => {
-    return {
+export const addExpenseItem = (id, name, amount, userId) => async dispatch => {
+    await server.post(`/dashboard/${userId}`, {
+        "label": name,
+        "amount": amount,
+        "listType": "LIABILITIES"
+    })
+    return dispatch({
         type: ADD_EXPENSE_ITEM,
         payload: {
             id, name, amount
         }
-    }
+    });
 }
 
 export const removeExpensesItem = (id) => {
@@ -58,13 +70,16 @@ export const removeIncomeItem = (id) => {
     }
 }
 
-export const signIn = (userId, username, profilePicture) => {
-    return {
+export const signIn = (userId, username, profilePicture) => async dispatch => {
+    server.post("/users/new", {
+        username, userId
+    });
+    return dispatch({
         type: SIGN_IN,
         payload: {
             userId, username, profilePicture
         }
-    }
+    });
 }
 
 export const signOut = () => {

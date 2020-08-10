@@ -59,10 +59,10 @@ class SideBar extends React.Component {
   render() {
       if (!this.props.showSidebar) return null;
       return (
-        <div  className="fixed w-full top-0 right-0 h-screen transform translate-x-full transition-transform duration-300">
+        <div  className="fixed w-full top-0 right-0 h-screen transform transition-transform duration-300">
           <div className="fixed w-full h-full bg-black bg-opacity-50 z-10"></div>
 
-          <div ref={this.ref} className="fixed max-w-xs w-full top-0 right-0 h-screen bg-gray-900 p-8 z-20 flex flex-col justify-between items-center">
+          <div ref={this.ref} className="translate-x-full  fixed max-w-xs w-full top-0 right-0 h-screen bg-gray-900 p-8 z-20 flex flex-col justify-between items-center">
             <div className="relative w-full flex flex-col">
               <Cross />
               <img className="mt-24 w-32 h-32 bg-white rounded-full overflow-hidden mx-auto mb-4" src={this.props.profilePicture} />
