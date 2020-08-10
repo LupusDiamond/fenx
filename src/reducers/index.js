@@ -9,8 +9,11 @@ import {
     ADD_EXPENSE_ITEM,
     REMOVE_EXPENSE_ITEM,
     HIDE_SIDEBAR,
-    SHOW_SIDEBAR
+    SHOW_SIDEBAR,
+    FETCH_ASSETS
 } from "../actions/types";
+
+import server from '../apis/server';
 
 const incomeReducer = (amount = 0, action) => {
     switch (action.type) {
@@ -32,6 +35,8 @@ const expenseReducer = (amount = 0, action) => {
 
 const incomeListReducer = (oldList = [], action) => {
     switch (action.type) {
+        case FETCH_ASSETS: 
+            return action.payload;
         case ADD_INCOME_ITEM:
             return [...oldList, action.payload];
         case REMOVE_INCOME_ITEM:

@@ -9,6 +9,8 @@ import {
     SIGN_OUT,
     HIDE_SIDEBAR,
     SHOW_SIDEBAR,
+    FETCH_ASSETS,
+    FETCH_LIABILITIES
 } from "./types";
 
 import server from '../apis/server';
@@ -28,18 +30,32 @@ export const addExpense = (amount) => {
     }
 }
 
+export const fetchAssets = (userId) => async dispatch => {
+    const dashboard = await server.get(`/dashboard/${userId}`);
+    return dispatch({
+        type: FETCH_ASSETS,
+        payload: dashboard.data.assets
+    });
+}
+
 export const addIncomeItem = (id, name, amount, userId) => async dispatch =>{
-    await server.post(`/dashboard/${userId}`, {
+    const newListItem = await server.post(`/dashboard/${userId}`, {
         "label": name,
         "amount": amount,
         "listType": "ASSETS"
     });
+
     return dispatch({
         type: ADD_INCOME_ITEM,
-        payload: {
-            id, name, amount
-        }
+        payload: newListItem
     });
+}
+
+export const removeIncomeItem = (id) => async dispatch => {
+    return {
+        type: REMOVE_INCOME_ITEM,
+        payload: id
+    }
 }
 
 export const addExpenseItem = (id, name, amount, userId) => async dispatch => {
@@ -56,19 +72,14 @@ export const addExpenseItem = (id, name, amount, userId) => async dispatch => {
     });
 }
 
-export const removeExpensesItem = (id) => {
+export const removeExpensesItem = (id, userId) => async dispatch => {
+    await server.delete(`/dashboard/${userId}/${id}`);
     return {
         type: REMOVE_EXPENSE_ITEM,
         payload: id
     }
 }
 
-export const removeIncomeItem = (id) => {
-    return {
-        type: REMOVE_INCOME_ITEM,
-        payload: id
-    }
-}
 
 export const signIn = (userId, username, profilePicture) => async dispatch => {
     server.post("/users/new", {

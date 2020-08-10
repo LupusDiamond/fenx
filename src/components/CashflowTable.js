@@ -10,6 +10,7 @@ import {
   addExpenseItem,
   removeExpensesItem,
   removeIncomeItem,
+  fetchAssets
 } from "../actions";
 
 class CashflowTable extends Component {
@@ -19,6 +20,10 @@ class CashflowTable extends Component {
     counter: 0,
     showBoxes: false,
   };
+
+  componentDidMount() {
+    this.props.fetchAssets(this.props.userId);
+  }
 
   onTextChange = (e) => {
     this.setState({ inputValue: e.target.value });
@@ -50,12 +55,12 @@ class CashflowTable extends Component {
     }
   };
 
-  renderList = () => {
+    renderList() {
     return this.props.listItems.map((e) => (
       <ListItem
-        key={e.id}
-        id={e.id}
-        text={e.name}
+        key={e._id}
+        id={e._id}
+        text={e.label}
         amount={e.amount}
         toDelete={this.removeItem}
         showBox={this.state.showBoxes}
@@ -133,4 +138,5 @@ export default connect(mapStateToProps, {
   addExpenseItem,
   removeExpensesItem,
   removeIncomeItem,
+  fetchAssets
 })(CashflowTable);
