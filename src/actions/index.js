@@ -47,7 +47,11 @@ export const addIncomeItem = (id, name, amount, userId) => async dispatch =>{
 
     return dispatch({
         type: ADD_INCOME_ITEM,
-        payload: newListItem
+        payload: {
+            "label": name,
+            "amount": amount,
+            "listType": "ASSETS"
+        }
     });
 }
 
