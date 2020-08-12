@@ -10,7 +10,11 @@ import {
   addExpenseItem,
   removeExpensesItem,
   removeIncomeItem,
-  fetchAssets
+  fetchAssets,
+  fetchLiablities,
+  setIncome,
+  setExpense,
+  
 } from "../actions";
 
 class CashflowTable extends Component {
@@ -19,10 +23,15 @@ class CashflowTable extends Component {
     amountValue: "",
     counter: 0,
     showBoxes: false,
+    amount: 0
   };
 
+  a = 0;
+
   componentDidMount() {
+    if (this.props.label === "ASSETS")
     this.props.fetchAssets(this.props.userId);
+    else this.props.fetchLiablities(this.props.userId);
   }
 
   onTextChange = (e) => {
@@ -56,7 +65,10 @@ class CashflowTable extends Component {
   };
 
     renderList() {
-    return this.props.listItems.map((e) => (
+      this.a = 0;
+      return this.props.listItems.map((e) => {
+      this.a += e.amount;
+      return (
       <ListItem
         key={e._id}
         id={e._id}
@@ -65,15 +77,22 @@ class CashflowTable extends Component {
         toDelete={this.removeItem}
         showBox={this.state.showBoxes}
       />
-    ));
+    )})
+    ;
   };
+
+  updateInformation() {
+    if (this.props.label === "ASSETS") {
+      this.props.setIncome(this.a);
+    } else this.props.setExpense(this.a);
+  }
+
   removeItem = (e) => {
     
     if (this.props.type === "income") {
-      console.log(e);
       this.props.removeIncomeItem(this.props.userId,e);
     } else {
-      this.props.removeExpensesItem(e);
+      this.props.removeExpensesItem(this.props.userId, e);
     }
   };
   showBoxes = (e) => {
@@ -118,7 +137,7 @@ class CashflowTable extends Component {
             </button>
           </div>
           <div className="grid grid-cols-1 gap-3 px-6 mb-6 sm:mb-12">
-            {this.renderList()}
+            {this.renderList()} {this.updateInformation()}
           </div>
         </div>
         <EditList changeClick={this.showBoxes} />
@@ -140,5 +159,9 @@ export default connect(mapStateToProps, {
   addExpenseItem,
   removeExpensesItem,
   removeIncomeItem,
-  fetchAssets
+  fetchAssets,
+  fetchLiablities,
+  setIncome,
+  setExpense,
+  
 })(CashflowTable);

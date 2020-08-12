@@ -10,13 +10,19 @@ import {
     REMOVE_EXPENSE_ITEM,
     HIDE_SIDEBAR,
     SHOW_SIDEBAR,
-    FETCH_ASSETS
+    FETCH_ASSETS,
+    FETCH_LIABILITIES,
+    SET_INCOME,
+    SET_EXPENSE
 } from "../actions/types";
 
 import server from '../apis/server';
+import { test } from "../actions";
 
 const incomeReducer = (amount = 0, action) => {
     switch (action.type) {
+        case SET_INCOME:
+            return action.payload;
         case ADD_INCOME:
             return amount + action.payload;
         default:
@@ -26,6 +32,8 @@ const incomeReducer = (amount = 0, action) => {
 
 const expenseReducer = (amount = 0, action) => {
     switch (action.type) {
+        case SET_EXPENSE:
+            return action.payload;
         case ADD_EXPENSE:
             return amount + action.payload;
         default:
@@ -48,10 +56,12 @@ const incomeListReducer = (oldList = [], action) => {
 
 const expenseListReducer = (oldList = [], action) => {
     switch (action.type) {
+        case FETCH_LIABILITIES:
+            return action.payload;
         case ADD_EXPENSE_ITEM:
             return [...oldList, action.payload];
         case REMOVE_EXPENSE_ITEM:
-            return oldList.filter(item => item.id != action.payload);
+            return oldList.filter(item => item._id != action.payload);
         default:
             return oldList;
     }
@@ -76,5 +86,5 @@ export default combineReducers({
     incomeList: incomeListReducer,
     expensesList: expenseListReducer,
     auth: authReducer,
-    showSidebar: sideBarReducer
+    showSidebar: sideBarReducer,
 })

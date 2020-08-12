@@ -2,6 +2,8 @@
 // Dashboard
 export const ADD_INCOME = 'ADD_INCOME';
 export const ADD_EXPENSE = 'ADD_EXPENSE';
+export const SET_INCOME = 'SET_INCOME';
+export const SET_EXPENSE = 'SET_EXPENSE';
 
 export const FETCH_ASSETS = 'FETCH_ASSETS';
 export const ADD_INCOME_ITEM = 'ADD_INCOME_ITEM';
