@@ -1,5 +1,6 @@
 import {combineReducers} from "redux";
 import authReducer from "./authReducer";
+import vaultsReducer from './vaults/index';
 
 import {
     ADD_INCOME,
@@ -16,8 +17,7 @@ import {
     SET_EXPENSE
 } from "../actions/types";
 
-import server from '../apis/server';
-import { test } from "../actions";
+
 
 const incomeReducer = (amount = 0, action) => {
     switch (action.type) {
@@ -87,4 +87,5 @@ export default combineReducers({
     expensesList: expenseListReducer,
     auth: authReducer,
     showSidebar: sideBarReducer,
+    vaults: vaultsReducer
 })

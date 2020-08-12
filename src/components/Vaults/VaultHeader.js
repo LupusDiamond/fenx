@@ -1,6 +1,13 @@
-import React from 'react';
+import React, { Component } from 'react';
+import {connect} from 'react-redux';
+import {showCreateModal} from '../../actions/vaults/modals';
 
-const VaultHeader = () => {
+class VaultHeader extends Component {
+    onNewVaultClick = () => {
+      this.props.showCreateModal();
+    }
+    render() {
+   
     return (
         <div
         class="flex flex-col sm:flex-row justify-between sm:items-center mb-6 pb-4 border-b-2 border-gray-400"
@@ -30,12 +37,15 @@ const VaultHeader = () => {
           </div>
         </div>
         <button
+          onClick={() => this.onNewVaultClick()}
           class="focus:outline-none focus:shadow-outline py-3 px-6 rounded-md bg-gray-900 text-white text-sm md:text-lg uppercase"
         >
           New Vault
         </button>
       </div>
-    )
+    ) }
 }
 
-export default VaultHeader;
+export default connect(null, {
+  showCreateModal
+})(VaultHeader);

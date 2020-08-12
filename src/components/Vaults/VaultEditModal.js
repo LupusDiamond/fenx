@@ -1,6 +1,11 @@
 import React from 'react'
+import {connect} from 'react-redux';
+import {hideCreateModal} from '../../actions/vaults/modals';
 
 class VaultEditModal extends React.Component {
+    onCancelClick = () => {
+      this.props.hideCreateModal();
+    }
     render() {
         return (
           <div class="fixed top-0 left-0 w-full h-screen bg-black bg-opacity-25 flex justify-center items-end md:items-center p-6">
@@ -62,7 +67,9 @@ class VaultEditModal extends React.Component {
                 <button className="bg-gray-900 text-white text-base md:text-xl py-2 px-6 rounded-lg focus:outline-none focus:shadow-outline">
                   Save
                 </button>
-                <button className="bg-gray-300 text-gray-700 text-base md:text-xl py-2 px-6 rounded-lg focus:outline-none focus:shadow-outline">
+                <button 
+                onClick={() => this.onCancelClick()}
+                className="bg-gray-300 text-gray-700 text-base md:text-xl py-2 px-6 rounded-lg focus:outline-none focus:shadow-outline">
                   Cancel
                 </button>
               </div>
@@ -74,4 +81,6 @@ class VaultEditModal extends React.Component {
     
 }
 
-export default VaultEditModal;
+export default connect(null, {
+  hideCreateModal
+})(VaultEditModal);
