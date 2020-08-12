@@ -14,7 +14,6 @@ import {
   fetchLiablities,
   setIncome,
   setExpense,
-  
 } from "../actions";
 
 class CashflowTable extends Component {
