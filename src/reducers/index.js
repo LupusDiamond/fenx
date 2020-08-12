@@ -40,7 +40,7 @@ const incomeListReducer = (oldList = [], action) => {
         case ADD_INCOME_ITEM:
             return [...oldList, action.payload];
         case REMOVE_INCOME_ITEM:
-            return oldList.filter(item => item.id != action.payload);
+            return oldList.filter(item => item._id != action.payload);
         default:
             return oldList;
     }

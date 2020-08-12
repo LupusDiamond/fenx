@@ -48,18 +48,19 @@ export const addIncomeItem = (id, name, amount, userId) => async dispatch =>{
     return dispatch({
         type: ADD_INCOME_ITEM,
         payload: {
-            "label": name,
-            "amount": amount,
-            "listType": "ASSETS"
+            label: name,
+            amount: amount,
+            listType: "ASSETS"
         }
     });
 }
 
-export const removeIncomeItem = (id) => async dispatch => {
-    return {
+export const removeIncomeItem = (userId, postId) => async dispatch => {
+    await server.delete(`/dashboard/${userId}/${postId}`);
+    return dispatch({
         type: REMOVE_INCOME_ITEM,
-        payload: id
-    }
+        payload: postId
+    })
 }
 
 export const addExpenseItem = (id, name, amount, userId) => async dispatch => {
@@ -77,7 +78,7 @@ export const addExpenseItem = (id, name, amount, userId) => async dispatch => {
 }
 
 export const removeExpensesItem = (id, userId) => async dispatch => {
-    await server.delete(`/dashboard/${userId}/${id}`);
+    //await server.delete(`/dashboard/${userId}/${id}`);
     return {
         type: REMOVE_EXPENSE_ITEM,
         payload: id

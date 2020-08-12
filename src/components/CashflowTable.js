@@ -68,8 +68,10 @@ class CashflowTable extends Component {
     ));
   };
   removeItem = (e) => {
+    
     if (this.props.type === "income") {
-      this.props.removeIncomeItem(e);
+      console.log(e);
+      this.props.removeIncomeItem(this.props.userId,e);
     } else {
       this.props.removeExpensesItem(e);
     }
