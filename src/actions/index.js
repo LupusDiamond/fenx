@@ -13,7 +13,7 @@ export {
     addIncomeItem,
     fetchAssets,
     removeIncomeItem
-} from './dashboardIncome';
+} from './dashboard/incomes';
 
 export {
     setExpense,
@@ -21,7 +21,7 @@ export {
     addExpenseItem,
     fetchLiablities,
     removeExpensesItem
-} from './dashboardExpense';
+} from './dashboard/expenses';
 
 
 

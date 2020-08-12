@@ -19,7 +19,7 @@ class VaultEditModal extends React.Component {
                 alt
               />
               <div className="absolute bottom-0 right-0 m-2 p-2 bg-white rounded-full shadow-md">
-                <img className="h-6 w-6" src={require("../assets/svgs/Pencil.svg")} alt="edit" />
+                <img className="h-6 w-6" src={require("../../assets/svgs/Pencil.svg")} alt="edit" />
               </div>
             </div>
             <div className="flex flex-col justify-between flex-1 pt-1">

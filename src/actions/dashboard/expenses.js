@@ -4,9 +4,9 @@ import {
     SET_EXPENSE,
     REMOVE_EXPENSE_ITEM,
     FETCH_LIABILITIES
-} from './types';
+} from '../types';
 
-import server from '../apis/server';
+import server from '../../apis/server';
 
 export const addExpense = (amount) => {
     return {

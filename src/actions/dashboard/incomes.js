@@ -4,9 +4,9 @@ import {
     ADD_INCOME_ITEM,
     REMOVE_INCOME_ITEM,
     FETCH_ASSETS
-} from './types';
+} from '../types';
 
-import server from '../apis/server';
+import server from '../../apis/server';
 
 export const setIncome = amount => {
     return {

@@ -3,12 +3,12 @@ import {BrowserRouter, Route, Redirect} from 'react-router-dom';
 import {connect} from 'react-redux';
 
 import Header from './Header';
-import SideBar from './Sidebar';
+import SideBar from './Sidebar/Sidebar';
 
 // Pages
-import Landing from './Landing';
-import Dashboard from './Dashboard';
-import Vaults from './Vaults';
+import Landing from './Landing/Landing';
+import Dashboard from './Dashboard/Dashboard';
+import Vaults from './Vaults/Vaults';
 import Revenues from './Revenues';
 
 class App extends Component {

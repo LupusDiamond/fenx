@@ -23,7 +23,7 @@ const VaultHeader = () => {
               <span>$2000</span>
               <img
                 class="w-6 h-6 ml-2 transform translate-y-1 sm:translate-y-px cursor-pointer"
-                src={require("../assets/svgs/Edit.svg")}
+                src={require("../../assets/svgs/Edit.svg")}
                 alt="edit"
               />
             </h6>
