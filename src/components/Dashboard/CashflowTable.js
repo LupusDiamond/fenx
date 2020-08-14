@@ -95,7 +95,6 @@ class CashflowTable extends Component {
     }
   };
   showBoxes = (e) => {
-    console.log("show the boxes!");
     this.setState({ showBoxes: !this.state.showBoxes });
   };
 
@@ -115,6 +114,7 @@ class CashflowTable extends Component {
                 className="border-4 text-gray-900 border-gray-900 py-2 px-3 rounded-lg text-base md:text-xl w-full focus:outline-none focus:shadow-outline"
                 type="text"
                 name="asset"
+                autoComplete="off"
                 placeholder="Enter an asset..."
                 onChange={this.onTextChange}
                 value={this.state.inputValue}
@@ -125,6 +125,7 @@ class CashflowTable extends Component {
               type="text"
               name="asset-amount"
               placeholder="$000"
+              autoComplete="off"
               onChange={this.onAmountChange}
               value={this.state.amountValue}
             />

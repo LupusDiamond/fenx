@@ -43,6 +43,7 @@ class VaultEditModal extends React.Component {
                     name="asset"
                     id="asset"
                     placeholder="Car, House etc"
+                    autoComplete="off"
                   />
                 </div>
                 {/* Input Box*/}
@@ -59,6 +60,7 @@ class VaultEditModal extends React.Component {
                     name="asset"
                     id="asset"
                     placeholder="$000"
+                    autoComplete="off"
                   />
                 </div>
               </div>
