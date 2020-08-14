@@ -22,9 +22,16 @@ class App extends Component {
     }
 
     checkLogin = () => {
-      if (!this.props.isSignedIn) {
+      if (!this.props.isSignedIn || this.props.userId == null) {
         return <Redirect to="/"/>
       }
+    }
+
+    showHeader = () => {
+      if (!this.props.isSignedIn || this.props.userId == null) {
+        return null;
+      }
+      return <Header />
     }
 
     render() {
@@ -37,7 +44,7 @@ class App extends Component {
                 {this.checkLogin()}
                 <Route path='/' exact component={Landing}/>
                 <Route path="/">
-                  <Header />
+                  {this.showHeader()}
                   <Route path="/dashboard" component={Dashboard}/>
                   <Route path="/vaults" component={Vaults}/>
                   <Route path="/revenues" component={Revenues} />
@@ -62,7 +69,8 @@ class App extends Component {
   const mapStateToProps = (state) => {
     return {
       isSignedIn: state.auth.isSignedIn,
-      showSidebar: state.showSidebar
+      showSidebar: state.showSidebar,
+      userId: state.auth.userId
     }
   }
 
