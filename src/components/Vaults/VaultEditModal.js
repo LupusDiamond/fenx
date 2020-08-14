@@ -1,9 +1,23 @@
 import React from 'react'
 import {connect} from 'react-redux';
-import {hideCreateModal} from '../../actions/vaults/modals';
+import {hideCreateModal, createVault} from '../../actions/vaults';
 
 class VaultEditModal extends React.Component {
+
+  state = {
+    label: '',
+    amount: 0,
+    imageURL: '',
+  }
+
+  counter = 0;
+
     onCancelClick = () => {
+      this.props.hideCreateModal();
+    }
+
+    onSaveClick = () => {
+      this.props.createVault(this.props.userId, ++this.counter, this.state.label, this.state.amount);
       this.props.hideCreateModal();
     }
     render() {
@@ -38,6 +52,7 @@ class VaultEditModal extends React.Component {
                     Name
                   </label>
                   <input
+                    onChange={(e) => this.setState({label: e.target.value})}
                     className="border-4 text-gray-900 border-gray-900 py-2 px-4 rounded-lg text-xl w-full focus:outline-none focus:shadow-outline"
                     type="text"
                     name="asset"
@@ -55,6 +70,7 @@ class VaultEditModal extends React.Component {
                     Amount
                   </label>
                   <input
+                    onChange={(e) => this.setState({amount: parseInt(e.target.value)})}
                     className="border-4 text-gray-900 border-gray-900 py-2 px-4 rounded-lg text-xl w-full focus:outline-none focus:shadow-outline"
                     type="text"
                     name="asset"
@@ -66,7 +82,9 @@ class VaultEditModal extends React.Component {
               </div>
               {/* Buttons */}
               <div className="w-full grid grid-cols-1 gap-3 sm:flex">
-                <button className="bg-gray-900 text-white text-base md:text-xl py-2 px-6 rounded-lg focus:outline-none focus:shadow-outline">
+                <button
+                onClick={() => this.onSaveClick()}
+                className="bg-gray-900 text-white text-base md:text-xl py-2 px-6 rounded-lg focus:outline-none focus:shadow-outline">
                   Save
                 </button>
                 <button 
@@ -83,6 +101,10 @@ class VaultEditModal extends React.Component {
     
 }
 
-export default connect(null, {
-  hideCreateModal
+const mapStateToProps = (state) => {
+  return {userId: state.auth.userId}
+}
+
+export default connect(mapStateToProps, {
+  hideCreateModal, createVault
 })(VaultEditModal);

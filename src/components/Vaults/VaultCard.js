@@ -1,9 +1,11 @@
-import React, {useState} from 'react'
+import React, {useState} from 'react';
+import {connect} from 'react-redux';
+import {setVaultFavorite, deleteVault} from '../../actions'
 
-const VaultCard = ({label, amount}) => {
+const VaultCard = ({label, amount, id, userId, setVaultFavorite, fav, deleteVault}) => {
 
     const [showOptions, setShowOptions] = useState(false);
-    const [favorite, setFavorite] = useState(false);
+    const [favorite, setFavorite] = useState(fav);
 
     const renderFavorite = () => {
       if (favorite) {
@@ -18,12 +20,20 @@ const VaultCard = ({label, amount}) => {
       }
     }
     
+    const onFavoriteAddClick = (value) => {
+      setVaultFavorite(userId, id, value);
+      setFavorite(value);
+    }
+
+    const onDeleteClick = () => {
+      deleteVault(userId, id);
+    }
 
     const renderFavoriteButton = () => {
       if (!favorite) {
         return (
           <button 
-                onClick={() => setFavorite(true)}
+                onClick={() => onFavoriteAddClick(true)}
                 className="focus:outline-none px-5 w-full text-left flex items-center py-2">
                   <img src={require("../../assets/images/md-heart.svg")} alt="heart" />
                   <p className="ml-3 font-semibold flex-1 flex-shrink-0">Add to Favorites</p>
@@ -49,7 +59,9 @@ const VaultCard = ({label, amount}) => {
                   <p className="ml-3 font-semibold flex-1 flex-shrink-0">Edit Item</p>
                 </button>
                 <div className="w-5/6 h-px bg-gray-300 mx-auto" />
-                <button className="focus:outline-none px-5 w-full text-left flex items-center py-2">
+                <button 
+                onClick={() => onDeleteClick()}
+                className="focus:outline-none px-5 w-full text-left flex items-center py-2">
                   <img src={require("../../assets/images/md-trash.svg")} alt="bin" />
                   <p className="ml-3 font-semibold flex-1 flex-shrink-0">Delete Item</p>
                 </button>
@@ -81,10 +93,17 @@ const VaultCard = ({label, amount}) => {
             </div>
             <div className="flex justify-between py-2 px-6 text-white font-normal">
               <p className="truncate">{label}</p>
-              <p className="ml-2 truncate w-24 text-right">{amount}$</p>
+              <p className="ml-2 truncate w-24 text-right">${amount}</p>
             </div>
           </div>
     )
 }
 
-export default VaultCard;
+const mapStateToProps = (state) => {
+  return {userId: state.auth.userId}
+}
+
+
+export default connect(mapStateToProps, {
+setVaultFavorite, deleteVault
+})(VaultCard);

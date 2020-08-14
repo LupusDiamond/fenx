@@ -23,7 +23,9 @@ export {
     removeExpensesItem
 } from './dashboard/expenses';
 
-
+export {
+    fetchVaults, createVault, setVaultFavorite, deleteVault
+} from "./vaults";
 
 export const signIn = (userId, username, profilePicture) => async dispatch => {
     server.post("/users/new", {

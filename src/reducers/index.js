@@ -87,5 +87,5 @@ export default combineReducers({
     expensesList: expenseListReducer,
     auth: authReducer,
     showSidebar: sideBarReducer,
-    vaults: vaultsReducer
+    vaultsState: vaultsReducer
 })

@@ -1,5 +1,5 @@
 
-// Dashboard
+// Dashboard Page
 export const ADD_INCOME = 'ADD_INCOME';
 export const ADD_EXPENSE = 'ADD_EXPENSE';
 export const SET_INCOME = 'SET_INCOME';
@@ -13,7 +13,13 @@ export const FETCH_LIABILITIES = 'FETCH_LIABILITIES';
 export const REMOVE_EXPENSE_ITEM = 'REMOVE_EXPENSE_ITEM';
 export const REMOVE_INCOME_ITEM = 'REMOVE_INCOME_ITEM';
 
-// Vaults
+/// Vaults Page
+// Vault Cards
+export const FETCH_VAULTS = 'FETCH_VAULTS';
+export const CREATE_VAULT = 'CREATE_VAULT';
+export const SET_VAULT_FAVORITE = 'SET_VAULT_FAVORITE';
+export const DELETE_VAULT = 'DELETE_VAULT';
+// Modals
 export const SHOW_CREATE_MODAL = 'SHOW_CREATE_MODAL';
 export const HIDE_CREATE_MODAL = 'HIDE_CREATE_MODAL';
 export const SHOW_EDIT_VAULT_MODAL = 'SHOW_EDIT_VAULT_MODAL';
