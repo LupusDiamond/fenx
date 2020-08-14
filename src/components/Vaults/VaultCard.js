@@ -3,6 +3,42 @@ import React, {useState} from 'react'
 const VaultCard = ({label, amount}) => {
 
     const [showOptions, setShowOptions] = useState(false);
+    const [favorite, setFavorite] = useState(false);
+
+    const renderFavorite = () => {
+      if (favorite) {
+        return (
+          <div className="absolute top-0 left-0">
+              <div className="m-4 rounded-full bg-red-300 p-1">
+                <img src={require("../../assets/images/red-heart.svg")} alt="heart" className="h-6 w-6 absolute top-0 left-0 m-5" />
+                 <img src={require("../../assets/images/red-heart.svg")} alt="heart" className="h-6 w-6 animate-ping" />
+              </div>
+          </div>
+        );
+      }
+    }
+    
+
+    const renderFavoriteButton = () => {
+      if (!favorite) {
+        return (
+          <button 
+                onClick={() => setFavorite(true)}
+                className="focus:outline-none px-5 w-full text-left flex items-center py-2">
+                  <img src={require("../../assets/images/md-heart.svg")} alt="heart" />
+                  <p className="ml-3 font-semibold flex-1 flex-shrink-0">Add to Favorites</p>
+                </button>
+        )
+      }
+      return (
+        <button 
+                onClick={() => setFavorite(false)}
+                className="focus:outline-none px-5 w-full text-left flex items-center py-2">
+                  <img src={require("../../assets/images/md-heart.svg")} alt="heart" />
+                  <p className="ml-3 font-semibold flex-1 flex-shrink-0">Remove from Favorites</p>
+                </button>
+      )
+    }
 
     const renderOptions = () => {
         if (showOptions) {
@@ -18,10 +54,8 @@ const VaultCard = ({label, amount}) => {
                   <p className="ml-3 font-semibold flex-1 flex-shrink-0">Delete Item</p>
                 </button>
                 <div className="w-5/6 h-px bg-gray-300 mx-auto" />
-                <button className="focus:outline-none px-5 w-full text-left flex items-center py-2">
-                  <img src={require("../../assets/images/md-heart.svg")} alt="heart" />
-                  <p className="ml-3 font-semibold flex-1 flex-shrink-0">Add to Favourites</p>
-                </button>
+
+                {renderFavoriteButton()};
             </div>
             )
         } else return null;
@@ -31,12 +65,7 @@ const VaultCard = ({label, amount}) => {
         <div   className="bg-gray-900 rounded-lg shadow-lg overflow-hidden">
             <div className="image-box w-full relative bg-white" style={{paddingTop: '56.25%'}}>
               <img className="absolute top-0 left-0 w-full h-full object-center object-cover" src={require("../../assets/images/tepes.jpg")} alt="vault-item" />
-              <div className="absolute top-0 left-0">
-                <div className="m-4 rounded-full bg-red-300 p-1">
-                  <img src={require("../../assets/images/red-heart.svg")} alt="heart" className="h-6 w-6 absolute top-0 left-0 m-5" />
-                  <img src={require("../../assets/images/red-heart.svg")} alt="heart" className="h-6 w-6 animate-ping" />
-                </div>
-              </div>
+                {renderFavorite()}
               <div onMouseEnter={() => {
           setShowOptions(true);
       }} onMouseLeave={() => {
