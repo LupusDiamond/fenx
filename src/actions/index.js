@@ -24,7 +24,8 @@ export {
 } from './dashboard/expenses';
 
 export {
-    fetchVaults, createVault, setVaultFavorite, deleteVault
+    fetchVaults, createVault, setVaultFavorite, deleteVault, showUnsplashModal,
+    hideUnsplashModal, hideCreateModal, showCreateModal, searchUnsplashImage, selectUnplashImage
 } from "./vaults";
 
 export const signIn = (userId, username, profilePicture) => async dispatch => {

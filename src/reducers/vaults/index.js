@@ -3,12 +3,19 @@ import {
     HIDE_CREATE_MODAL,
     FETCH_VAULTS,
     CREATE_VAULT,
-    DELETE_VAULT
+    DELETE_VAULT,
+    SHOW_UNSPLASH_MODAL,
+    HIDE_UNSPLASH_MODAL,
+    SEARCH_UNSPLASH_IMAGE,
+    SELECT_UNSPLASH_IMAGE
 } from '../../actions/types';
 
 const INITIAL_STATE = {
     showCreateModal: false,
-    vaults: []
+    showUnsplashModal: false,
+    vaults: [],
+    images: [],
+    modalPreviewImage: ''
 }
 
 export default (state = INITIAL_STATE, action) => {
@@ -25,6 +32,14 @@ export default (state = INITIAL_STATE, action) => {
             return {...state, showCreateModal: true}
         case HIDE_CREATE_MODAL:
             return {...state, showCreateModal: false};
+        case SHOW_UNSPLASH_MODAL:
+            return {...state, showUnsplashModal: true, showCreateModal: false};
+        case HIDE_UNSPLASH_MODAL:
+            return {...state, showUnsplashModal: false, showCreateModal: true};
+        case SEARCH_UNSPLASH_IMAGE:
+            return {...state, images: action.payload.data.results};
+        case SELECT_UNSPLASH_IMAGE:
+            return {...state, modalPreviewImage: action.payload}
         default:
             return state;
     }

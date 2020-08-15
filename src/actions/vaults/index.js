@@ -10,7 +10,11 @@ import server from '../../apis/server';
 
 export {
     hideCreateModal,
-    showCreateModal
+    showCreateModal,
+    hideUnsplashModal,
+    showUnsplashModal,
+    searchUnsplashImage,
+    selectUnplashImage
 } from './modals';
 
 export const fetchVaults = (userId) => async dispatch => {
@@ -31,7 +35,7 @@ export const createVault = (userId, id, label, amount, imageUrl) => async dispat
         type: CREATE_VAULT,
         payload: {
             _id: id,
-            label, totalAmount: amount, imageUrl
+            label, totalAmount: amount, imageURL: imageUrl
         }
     })
 }

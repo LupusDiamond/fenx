@@ -19,7 +19,7 @@ class App extends Component {
     }
 
     checkLogin = () => {
-      if (!this.props.isSignedIn || this.props.userId == null) {
+      if (!this.props.isSignedIn || this.props.userId == null || this.props.userId == undefined) {
         return <Redirect to="/"/>
       }
     }

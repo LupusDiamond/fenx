@@ -6,6 +6,7 @@ import VaultHeader from './VaultHeader';
 import {fetchVaults} from '../../actions'
 import unsplash from '../../apis/unsplash';
 import {connect} from 'react-redux';
+import Modals from './Modals';
 
 class Vaults extends React.Component {
 
@@ -13,16 +14,16 @@ class Vaults extends React.Component {
         this.props.fetchVaults(this.props.userId);
     }
 
-    renderCreateModal() {
-        if (this.props.showCreateModal) {
-            return <VaultEditModal />
+    renderModals() {
+        console.log(this.props.vaults)
+        if (this.props.showCreateModal || this.props.showUnsplashModal) {
+            return <Modals />
         }
         return null;
     }  
 
     renderVaults() {
         const sortedVaults = this.props.vaults.sort((e1, e2) => {
-            console.log(e1);
             return e2.favorite - e1.favorite
         });
 
@@ -38,11 +39,6 @@ class Vaults extends React.Component {
         })
     }
 
-    onUnspashClick = async () => {
-        const photos = await unsplash.get("/photos");
-        console.log(photos);
-    }
-
     render() {
         return (
         <div className="pt-6">
@@ -52,8 +48,8 @@ class Vaults extends React.Component {
             {this.renderVaults()}
             </div>
             </div>
-            {this.renderCreateModal()}
-            <button onClick={() => this.onUnspashClick()}>Unsplash</button>
+            {this.renderModals()}
+            
         </div>
         )
     }
@@ -61,7 +57,9 @@ class Vaults extends React.Component {
 }
 
 const mapStateToProps = (state) => {
-    return {showCreateModal: state.vaultsState.showCreateModal, vaults:state.vaultsState.vaults, userId: state.auth.userId};
+    return {showCreateModal: state.vaultsState.showCreateModal, vaults:state.vaultsState.vaults, userId: state.auth.userId,
+        showUnsplashModal: state.vaultsState.showUnsplashModal
+    };
 }
 
 export default connect(mapStateToProps, {
