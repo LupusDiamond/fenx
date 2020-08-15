@@ -14,10 +14,7 @@ import Revenues from './Revenues';
 class App extends Component {
 
     showSidebar = () => {
-      console.log(this.props.showSidebar);
-      if (!this.props.showSidebar) {
-        return null;
-      }
+      if (!this.props.isSignedIn || this.props.userId == null) return null;
       return <SideBar />
     }
 
