@@ -1,9 +1,11 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
+import {connect} from 'react-redux';
+import {hideSidebar} from '../../actions';
 
-const SideBarLink = ({destination, text}) => {
+const SideBarLink = ({destination, text, hideSidebar}) => {
     return (
-        <Link to={destination} className="flex">
+        <Link onClick={() => hideSidebar()} to={destination} className="flex">
             <svg
                 className="h-8 w-8 text-gray-500 mt-1 mr-2"
                 width="24"
@@ -25,4 +27,6 @@ const SideBarLink = ({destination, text}) => {
     )
 }
 
-export default SideBarLink;
+export default connect(null, {
+    hideSidebar
+})(SideBarLink);
