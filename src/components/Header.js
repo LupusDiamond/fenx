@@ -8,7 +8,7 @@ import {connect} from 'react-redux';
 class Header extends React.Component {
   render() {
     return (
-      <header className="w-full bg-gray-900 shadow-lg mb-6">
+      <header className="w-full bg-gray-900 shadow-lg">
         <div className="max-w-6xl w-full mx-auto px-6 py-3 flex justify-between items-center">
           <div className="logo flex flex-col">
             <p className="text-4xl text-white -ml-px">FenX</p>

@@ -6,7 +6,7 @@ import CashflowTable from "./CashflowTable";
 class Dashboard extends Component {
     render() {
       return (
-        <div className="bg-gray-200 min-h-screen">
+        <div className="bg-gray-200 min-h-screen pt-6">
             <main className="max-w-6xl w-full mx-auto px-6">
             <BigBoxes/>
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-6">
