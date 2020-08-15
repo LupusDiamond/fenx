@@ -3,9 +3,19 @@ import {connect} from 'react-redux';
 import {showCreateModal} from '../../actions/vaults/modals';
 
 class VaultHeader extends Component {
+
+    state = {
+      totalAmount: 0
+    }
+
     onNewVaultClick = () => {
       this.props.showCreateModal();
     }
+
+    calculateTotal = () => {
+     
+    }
+
     render() {
    
     return (
@@ -22,7 +32,7 @@ class VaultHeader extends Component {
             <label
               class="text-xs md:text-sm font-bold uppercase tracking-wide -mb-1 text-gray-700"
             >
-              Savings
+              Total
             </label>
             <h6
               class="text-gray-900 text-lg md:text-2xl font-bold uppercase tracking-wide flex items-baseline"
@@ -46,6 +56,10 @@ class VaultHeader extends Component {
     ) }
 }
 
-export default connect(null, {
+const mapStateToProps = state => {
+  return {vaults: state.vaultsState.vaults};
+}
+
+export default connect(mapStateToProps, {
   showCreateModal
 })(VaultHeader);

@@ -4,7 +4,7 @@ import Header from '../Header';
 import VaultEditModal from './VaultEditModal'
 import VaultHeader from './VaultHeader';
 import {fetchVaults} from '../../actions'
-
+import unsplash from '../../apis/unsplash';
 import {connect} from 'react-redux';
 
 class Vaults extends React.Component {
@@ -38,12 +38,14 @@ class Vaults extends React.Component {
         })
     }
 
-
+    onUnspashClick = async () => {
+        const photos = await unsplash.get("/photos");
+        console.log(photos);
+    }
 
     render() {
-        console.log(this.props.vaults);
         return (
-        <div>
+        <div className="pt-6">
             <div className="max-w-6xl w-full mx-auto px-6">
             <VaultHeader />
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mb-6">
@@ -51,6 +53,7 @@ class Vaults extends React.Component {
             </div>
             </div>
             {this.renderCreateModal()}
+            <button onClick={() => this.onUnspashClick()}>Unsplash</button>
         </div>
         )
     }

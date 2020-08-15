@@ -67,7 +67,7 @@ const VaultCard = ({label, amount, id, userId, setVaultFavorite, fav, deleteVaul
                 </button>
                 <div className="w-5/6 h-px bg-gray-300 mx-auto" />
 
-                {renderFavoriteButton()};
+                {renderFavoriteButton()}
             </div>
             )
         } else return null;
