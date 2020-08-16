@@ -64,7 +64,7 @@ class SideBar extends React.Component {
   renderBackground = () => {
     if (this.props.showSidebar) return null;
     return {
-      "pointer-events": "none"
+      "pointerEvents": "none"
     };
   }
 
@@ -76,7 +76,7 @@ class SideBar extends React.Component {
   render() {
       return (
         <div  className={`fixed w-full top-0 right-0 h-screen transform transition-transform duration-300`} style={this.renderBackground()}>
-          <div className={`fixed w-full h-full bg-black ${this.backgroundOpacity()} z-10`} style={{"transition-duration": "0.3s"}}></div>
+          <div className={`fixed w-full h-full bg-black ${this.backgroundOpacity()} z-10 duration-300`}></div>
 
           <div ref={this.ref} className={`${this.sideBarValue()} transform transition-transform duration-300 fixed max-w-xs w-full top-0 right-0 h-screen bg-gray-900 p-8 z-20 flex flex-col justify-between items-center`}>
             <div className="relative w-full flex flex-col">
@@ -95,7 +95,7 @@ class SideBar extends React.Component {
 
             <GoogleAuth
               signOutComponent={
-                <p className="text-red-500 font-semibold text-base md:text-xl">
+                <p className="text-red-500 font-semibold text-base md:text-xl cursor-pointer">
                   Log Out
                 </p>
               }

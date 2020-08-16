@@ -24,7 +24,7 @@ class ImagePreviewModal extends Component {
               <p className="text-gray-600 text-2xl font-bold">No Image</p>
             </div>
             <img className="absolute top-0 left-0 object-cover h-full w-full flex-1 flex-shrink-0" src={this.props.imageUrl} alt="" />
-            <div onClick={() => this.onUnsplashClick()} className="absolute bottom-0 right-0 m-2 p-1 bg-white rounded-full shadow-base">
+            <div onClick={() => this.onUnsplashClick()} className="absolute bottom-0 right-0 m-2 p-1 bg-white rounded-full shadow-base cursor-pointer">
               <svg className="h-8 w-8" width={40} height={40} viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink">
                 <rect width={40} height={40} rx={20} fill="url(#pattern0)" />
                 <defs>
@@ -41,7 +41,7 @@ class ImagePreviewModal extends Component {
             <svg className="mr-2 w-5 h-5 text-gray-500" width={24} height={24} viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
               <path d="M13 16H12V12H11M12 8H12.01M21 12C21 13.1819 20.7672 14.3522 20.3149 15.4442C19.8626 16.5361 19.1997 17.5282 18.364 18.364C17.5282 19.1997 16.5361 19.8626 15.4442 20.3149C14.3522 20.7672 13.1819 21 12 21C10.8181 21 9.64778 20.7672 8.55585 20.3149C7.46392 19.8626 6.47177 19.1997 5.63604 18.364C4.80031 17.5282 4.13738 16.5361 3.68508 15.4442C3.23279 14.3522 3 13.1819 3 12C3 9.61305 3.94821 7.32387 5.63604 5.63604C7.32387 3.94821 9.61305 3 12 3C14.3869 3 16.6761 3.94821 18.364 5.63604C20.0518 7.32387 21 9.61305 21 12Z" stroke="currentColor" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round" />
             </svg>
-            <span className="text-gray-600">Tap to Upload an Image or choose from Unsplash.</span>
+            <span className="text-gray-600">Tap to choose an image from Unsplash.</span>
           </p>
         </div>
         </div>

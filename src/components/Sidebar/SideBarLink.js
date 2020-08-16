@@ -5,9 +5,9 @@ import {hideSidebar} from '../../actions';
 
 const SideBarLink = ({destination, text, hideSidebar}) => {
     return (
-        <Link onClick={() => hideSidebar()} to={destination} className="flex">
+        <Link onClick={() => hideSidebar()} to={destination} className="flex items-center">
             <svg
-                className="h-8 w-8 text-gray-500 mt-1 mr-2"
+                className="h-5 w-5 md:h-8 md:w-8 text-gray-500 mr-2"
                 width="24"
                 height="24"
                 viewBox="0 0 24 24"
