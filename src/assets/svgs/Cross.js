@@ -8,7 +8,7 @@ class Cross extends React.Component {
             <svg onClick={() => {
                 this.props.hideSidebar()
             }}
-                className="h-8 w-8 absolute top-0 left-0 text-white"
+                className="h-8 w-8 absolute top-0 left-0 text-white cursor-pointer"
                 width="24"
                 height="24"
                 viewBox="0 0 24 24"

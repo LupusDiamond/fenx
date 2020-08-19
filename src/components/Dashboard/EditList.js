@@ -9,7 +9,7 @@ class EditList extends React.Component {
           className="text-sm md:text-lg text-gray-900 cursor-pointer"
         >
           <svg
-            className="inline mr-1 w-3 h-3 md:w-4 md:h-4 transform -translate-y-px"
+            className="inline mr-1 w-4 h-4 md:w-5 md:h-5 transform -translate-y-px text-gray-600"
             width="24"
             height="24"
             viewBox="0 0 24 24"
@@ -17,14 +17,14 @@ class EditList extends React.Component {
             xmlns="http://www.w3.org/2000/svg"
           >
             <path
-              d="M15.232 5.23199L18.768 8.76799L15.232 5.23199ZM16.732 3.73199C17.2009 3.26309 17.8369 2.99966 18.5 2.99966C19.1631 2.99966 19.7991 3.26309 20.268 3.73199C20.7369 4.2009 21.0003 4.83687 21.0003 5.49999C21.0003 6.16312 20.7369 6.79909 20.268 7.26799L6.5 21.036H3V17.464L16.732 3.73199V3.73199Z"
+              d="M10 11V17M14 11V17M4 7H20M19 7L18.133 19.142C18.0971 19.6466 17.8713 20.1188 17.5011 20.4636C17.1309 20.8083 16.6439 21 16.138 21H7.862C7.35614 21 6.86907 20.8083 6.49889 20.4636C6.1287 20.1188 5.90292 19.6466 5.867 19.142L5 7H19ZM15 7V4C15 3.73478 14.8946 3.48043 14.7071 3.29289C14.5196 3.10536 14.2652 3 14 3H10C9.73478 3 9.48043 3.10536 9.29289 3.29289C9.10536 3.48043 9 3.73478 9 4V7H15Z"
               stroke="currentColor"
               strokeWidth="2"
               strokeLinecap="round"
               strokeLinejoin="round"
             />
           </svg>
-          Edit List
+          Remove
         </p>
       </div>
     );

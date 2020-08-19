@@ -78,7 +78,7 @@ class SideBar extends React.Component {
 
             <GoogleAuth
               signOutComponent={
-                <p className="text-red-500 font-semibold text-base md:text-xl">
+                <p className="text-red-500 font-semibold text-base md:text-xl cursor-pointer">
                   Log Out
                 </p>
               }
