@@ -43,6 +43,7 @@ class CashflowTable extends Component {
   };
 
   onAddClick = (e) => {
+    if (this.state.input === "" || this.state.amountValue === '') return;
     this.setState({inputValue: "", amountValue: ""})
     if (this.props.type === "income") {
       this.props.addIncome(parseInt(this.state.amountValue));
@@ -123,6 +124,7 @@ class CashflowTable extends Component {
                 placeholder={this.props.placeholder}
                 onChange={this.onTextChange}
                 value={this.state.inputValue}
+                required
               />
             </div>
             <input
@@ -133,6 +135,7 @@ class CashflowTable extends Component {
               autoComplete="off"
               onChange={this.onAmountChange}
               value={this.state.amountValue}
+              required
             />
             <button
               onClick={() => this.onAddClick()}
