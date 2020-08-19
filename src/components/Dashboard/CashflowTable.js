@@ -120,7 +120,7 @@ class CashflowTable extends Component {
                 type="text"
                 name="asset"
                 autoComplete="off"
-                placeholder="Enter an asset..."
+                placeholder={this.props.placeholder}
                 onChange={this.onTextChange}
                 value={this.state.inputValue}
               />

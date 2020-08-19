@@ -36,7 +36,7 @@ class SideBar extends React.Component {
   }
 
   onSignOutClick = () => {
-    this.auth.signOut();
+    window.gapi.auth2.getAuthInstance().signOut();
   };
 
   sideBarValue = () => {

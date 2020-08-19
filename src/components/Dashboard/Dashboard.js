@@ -16,8 +16,8 @@ class Dashboard extends Component {
             <main className="max-w-6xl w-full mx-auto px-6">
             <BigBoxes/>
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-6">
-              <CashflowTable label="ASSETS" type="income"/>
-              <CashflowTable label="LIABILITIES" type="expenses"/>
+              <CashflowTable label="ASSETS" type="income" placeholder="Enter an asset . . ."/>
+              <CashflowTable label="LIABILITIES" type="expenses" placeholder="Enter a liablity . . ."/>
             </div>
           </main>
         </div>
