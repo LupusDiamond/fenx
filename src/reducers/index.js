@@ -71,10 +71,10 @@ const sideBarReducer = (show = false, action) => {
     switch (action.type) {
         case HIDE_SIDEBAR:
             show = false;
-            return show;
+            return false;
         case SHOW_SIDEBAR:
             show = true;
-            return show;
+            return true;
         default:
             return show;
     }

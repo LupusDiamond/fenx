@@ -26,7 +26,7 @@ class SideBar extends React.Component {
     this.props.hideSidebar();
   }
 
-  componentWillMount() {
+  componentDidMount() {
     document.body.addEventListener("click", this.onBodyClick);
   }
 
@@ -64,7 +64,7 @@ class SideBar extends React.Component {
           <div ref={this.ref} className={`${this.sideBarValue()} transform transition-transform duration-300 fixed max-w-xs w-full top-0 right-0 h-screen bg-gray-900 p-8 z-20 flex flex-col justify-between items-center`}>
             <div className="relative w-full flex flex-col">
               <Cross />
-              <img className="mt-24 w-32 h-32 bg-white rounded-full overflow-hidden mx-auto mb-4" src={this.props.profilePicture} />
+              <img alt="profilepicture" className="mt-24 w-32 h-32 bg-white rounded-full overflow-hidden mx-auto mb-4" src={this.props.profilePicture} />
               
               <p className="textbase md:text-xl text-white mx-auto mb-8 lg:mb-16">
                 {this.props.username}

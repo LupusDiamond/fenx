@@ -12,7 +12,6 @@ class Vaults extends React.Component {
     }
 
     renderModals() {
-        console.log(this.props.vaults)
         if (this.props.showCreateModal || this.props.showUnsplashModal) {
             return <Modals />
         }

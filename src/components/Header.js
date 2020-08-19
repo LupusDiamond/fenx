@@ -14,7 +14,6 @@ class Header extends React.Component {
           <FenXLogo />
           <svg
             onClick={() => {
-              console.log(this.props);
               this.props.showSidebar();
             }}
               className="h-10 text-white cursor-pointer"

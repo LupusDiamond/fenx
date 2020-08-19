@@ -32,7 +32,6 @@ export const signIn = (userId, username, profilePicture) => async dispatch => {
     server.post("/users/new", {
         username, userId
     });
-    console.log(username, userId);
     return dispatch({
         type: SIGN_IN,
         payload: {

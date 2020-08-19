@@ -25,7 +25,8 @@ class CashflowTable extends Component {
     amount: 0
   };
 
-  a = 0;
+  newAmount = 0;
+  oldAmount = 0;
 
   componentDidMount() {
     if (this.props.label === "ASSETS")
@@ -42,6 +43,7 @@ class CashflowTable extends Component {
   };
 
   onAddClick = (e) => {
+    this.setState({inputValue: "", amountValue: ""})
     if (this.props.type === "income") {
       this.props.addIncome(parseInt(this.state.amountValue));
       this.props.addIncomeItem(
@@ -64,9 +66,9 @@ class CashflowTable extends Component {
   };
 
     renderList() {
-      this.a = 0;
+      this.newAmount = 0;
       return this.props.listItems.map((e) => {
-      this.a += e.amount;
+      this.newAmount += e.amount;
       return (
       <ListItem
         key={e._id}
@@ -81,9 +83,12 @@ class CashflowTable extends Component {
   };
 
   updateInformation() {
+    
+    if (this.oldAmount === this.newAmount) return;
+    this.oldAmount = this.newAmount;
     if (this.props.label === "ASSETS") {
-      this.props.setIncome(this.a);
-    } else this.props.setExpense(this.a);
+      this.props.setIncome(this.newAmount);
+    } else this.props.setExpense(this.newAmount);
   }
 
   removeItem = (e) => {
