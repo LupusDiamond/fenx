@@ -50,7 +50,7 @@ class CashflowTable extends Component {
         parseInt(this.state.amountValue),
         this.props.userId
       );
-      this.setState({ counter: ++this.state.counter });
+      this.setState({ counter: Math.floor(Math.random() * 10000) });
     } else {
       this.props.addExpense(parseInt(this.state.amountValue));
       this.props.addExpenseItem(
@@ -59,7 +59,7 @@ class CashflowTable extends Component {
         parseInt(this.state.amountValue),
         this.props.userId
       );
-      this.setState({ counter: ++this.state.counter });
+      this.setState({ counter: Math.floor(Math.random() * 10000) });
     }
   };
 

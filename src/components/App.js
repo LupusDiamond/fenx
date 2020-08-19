@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import {BrowserRouter, Route, Redirect} from 'react-router-dom';
 import {connect} from 'react-redux';
+import {signIn, signOut} from '../actions';
 
 import Header from './Header';
 import SideBar from './Sidebar/Sidebar';
@@ -9,9 +10,36 @@ import SideBar from './Sidebar/Sidebar';
 import Landing from './Landing/Landing';
 import Dashboard from './Dashboard/Dashboard';
 import Vaults from './Vaults/Vaults';
+import VaultDetails from './Vaults/VaultDetails';
 import Revenues from './Revenues';
 
 class App extends Component {
+
+    componentDidMount() {
+      window.gapi.load('client:auth2', () => {
+        window.gapi.client.init({
+            clientId: '265605334965-05kmlnr85a9u0jo223s836e3iu3jr84u.apps.googleusercontent.com',
+            scope: "email profile"
+        }).then(() => {
+            this.auth = window.gapi.auth2.getAuthInstance();
+            this.currentUser = this.auth.currentUser.get().getBasicProfile();
+            this.onAuthChange(this.auth.isSignedIn.get());
+            this.auth.isSignedIn.listen(this.onAuthChange);
+        })
+    })
+    }
+
+    onAuthChange = async (isSignedIn) => {
+      if (isSignedIn) {
+          let userid = await this.auth.currentUser.get().getId();
+          let username = await this.auth.currentUser.get().getBasicProfile().getName();
+          let profilepic = await this.auth.currentUser.get().getBasicProfile().getImageUrl();
+          if (username === undefined) return;
+          this.props.signIn(userid, username, profilepic);
+      } else {
+          this.props.signOut();
+      }
+    }
 
     showSidebar = () => {
       if (!this.props.isSignedIn || this.props.userId == null) return null;
@@ -19,13 +47,13 @@ class App extends Component {
     }
 
     checkLogin = () => {
-      if (!this.props.isSignedIn || this.props.userId == null || this.props.userId == undefined) {
+      if (!this.props.isSignedIn || this.props.userId == null || this.props.userId === undefined) {
         return <Redirect to="/"/>
       }
     }
 
     showHeader = () => {
-      if (!this.props.isSignedIn || this.props.userId == null) {
+      if (!this.props.isSignedIn || this.props.userId === null) {
         return null;
       }
       return <Header />
@@ -35,7 +63,6 @@ class App extends Component {
       
       return (
         <div style={styles.appContainer}>
-          
             <BrowserRouter>
             <div>
                 {this.checkLogin()}
@@ -43,7 +70,8 @@ class App extends Component {
                 <Route path="/">
                   {this.showHeader()}
                   <Route path="/dashboard" component={Dashboard}/>
-                  <Route path="/vaults" component={Vaults}/>
+                  <Route path="/vaults" exact component={Vaults}/>
+                  <Route path="/vaults/details" component={VaultDetails} />
                   <Route path="/revenues" component={Revenues} />
                 </Route>
                 
@@ -71,4 +99,6 @@ class App extends Component {
     }
   }
 
-export default connect(mapStateToProps)(App);
+export default connect(mapStateToProps, {
+  signIn, signOut
+})(App);

@@ -26,7 +26,7 @@ export default (state = INITIAL_STATE, action) => {
             const oldVaults = state.vaults;
             return {...state, vaults: [...oldVaults, action.payload]};
         case DELETE_VAULT:
-            const newVaults = state.vaults.filter(vault => vault._id != action.payload);
+            const newVaults = state.vaults.filter(vault => vault._id !== action.payload);
             return {...state, vaults: newVaults}
         case SHOW_CREATE_MODAL:
             return {...state, showCreateModal: true}

@@ -30,9 +30,9 @@ class Header extends React.Component {
               <path
                 d="M13 18H20M4 6H20H4ZM4 12H20H4Z"
                 stroke="currentColor"
-                stroke-width="2"
-                stroke-linecap="round"
-                stroke-linejoin="round"
+                strokeWidth="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
               />
             </svg>
         </div>

@@ -1,4 +1,4 @@
-import React, { useRef, createRef } from "react";
+import React, { createRef } from "react";
 import {connect} from 'react-redux';
 import "../../assets/tailwind.css";
 import { signOut, signIn } from "../../actions";
@@ -30,27 +30,10 @@ class SideBar extends React.Component {
     document.body.addEventListener("click", this.onBodyClick);
   }
 
-  componentDidMount() {
-    this.auth = window.gapi.auth2.getAuthInstance();
-    this.onAuthChange(this.auth.isSignedIn.get());
-    this.auth.isSignedIn.listen(this.onAuthChange);
-  }
 
   componentWillUnmount() {
     document.body.removeEventListener("click", this.onBodyClick);
   }
-
-  onAuthChange = (isSignedIn) => {
-    if (isSignedIn) {
-      this.props.signIn(this.auth.currentUser.get().getId());
-    } else {
-      this.props.signOut();
-    }
-  };
-
-  onSignInClick = () => {
-    this.auth.signIn();
-  };
 
   onSignOutClick = () => {
     this.auth.signOut();
@@ -64,7 +47,7 @@ class SideBar extends React.Component {
   renderBackground = () => {
     if (this.props.showSidebar) return null;
     return {
-      "pointer-events": "none"
+      pointerEvents: "none"
     };
   }
 
@@ -76,7 +59,7 @@ class SideBar extends React.Component {
   render() {
       return (
         <div  className={`fixed w-full top-0 right-0 h-screen transform transition-transform duration-300`} style={this.renderBackground()}>
-          <div className={`fixed w-full h-full bg-black ${this.backgroundOpacity()} z-10`} style={{"transition-duration": "0.3s"}}></div>
+          <div className={`fixed w-full h-full bg-black ${this.backgroundOpacity()} z-10`} style={{transitionDuration: "0.3s"}}></div>
 
           <div ref={this.ref} className={`${this.sideBarValue()} transform transition-transform duration-300 fixed max-w-xs w-full top-0 right-0 h-screen bg-gray-900 p-8 z-20 flex flex-col justify-between items-center`}>
             <div className="relative w-full flex flex-col">

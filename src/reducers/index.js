@@ -48,7 +48,7 @@ const incomeListReducer = (oldList = [], action) => {
         case ADD_INCOME_ITEM:
             return [...oldList, action.payload];
         case REMOVE_INCOME_ITEM:
-            return oldList.filter(item => item._id != action.payload);
+            return oldList.filter(item => item._id !== action.payload);
         default:
             return oldList;
     }
@@ -61,7 +61,7 @@ const expenseListReducer = (oldList = [], action) => {
         case ADD_EXPENSE_ITEM:
             return [...oldList, action.payload];
         case REMOVE_EXPENSE_ITEM:
-            return oldList.filter(item => item._id != action.payload);
+            return oldList.filter(item => item._id !== action.payload);
         default:
             return oldList;
     }

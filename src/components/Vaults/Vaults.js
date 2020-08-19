@@ -1,10 +1,7 @@
 import React from 'react'
 import VaultCard from './VaultCard';
-import Header from '../Header';
-import VaultEditModal from './VaultEditModal'
 import VaultHeader from './VaultHeader';
 import {fetchVaults} from '../../actions'
-import unsplash from '../../apis/unsplash';
 import {connect} from 'react-redux';
 import Modals from './Modals';
 

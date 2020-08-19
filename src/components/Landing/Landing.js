@@ -1,5 +1,5 @@
 import React from "react";
-import { BrowserRouter, Link, Redirect } from "react-router-dom";
+import { Redirect } from "react-router-dom";
 import { connect } from "react-redux";
 
 import "./Landing.css";
@@ -11,7 +11,7 @@ import {hideSidebar} from '../../actions';
 
 const Landing = (props) => {
   props.hideSidebar();
-  if (props.isSignedIn) {
+  if (props.isSignedIn && props.userId !== undefined) {
     return <Redirect to="/dashboard" />;
   }
 
@@ -45,7 +45,7 @@ const Landing = (props) => {
 };
 
 const mapStateToProps = (state) => {
-  return { isSignedIn: state.auth.isSignedIn };
+  return { isSignedIn: state.auth.isSignedIn, userId: state.auth.isSignedIn };
 };
 
 export default connect(mapStateToProps, {

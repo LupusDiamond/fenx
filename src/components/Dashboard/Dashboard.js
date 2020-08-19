@@ -2,8 +2,14 @@ import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import BigBoxes from './BigBoxes';
 import CashflowTable from "./CashflowTable";
+import {signIn} from '../../actions'
 
 class Dashboard extends Component {
+
+    componentDidMount() {
+      //this.props.signIn(this.props.userId, this.props.username, this.props.profilePicture)
+    }
+
     render() {
       return (
         <div className="bg-gray-200 min-h-screen pt-6">
@@ -23,7 +29,12 @@ class Dashboard extends Component {
     return { 
       income: state.income,
       expenses: state.expenses,
+      userId: state.auth.userId,
+      username: state.auth.username,
+      profilePicture: state.auth.profilePicture
     }
   }
 
-export default connect(mapStateToProps)(Dashboard);
+export default connect(mapStateToProps, {
+  signIn
+})(Dashboard);

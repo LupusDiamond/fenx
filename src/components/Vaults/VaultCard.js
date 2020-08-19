@@ -1,6 +1,7 @@
 import React, {useState} from 'react';
 import {connect} from 'react-redux';
-import {setVaultFavorite, deleteVault} from '../../actions'
+import {Link} from 'react-router-dom'
+import {setVaultFavorite, deleteVault} from '../../actions';
 
 const VaultCard = ({label, amount, id, userId, setVaultFavorite, fav, deleteVault, imageURL}) => {
 
@@ -76,7 +77,9 @@ const VaultCard = ({label, amount, id, userId, setVaultFavorite, fav, deleteVaul
     return (
         <div   className="bg-gray-900 rounded-lg shadow-lg overflow-hidden">
             <div className="image-box w-full relative bg-white" style={{paddingTop: '56.25%'}}>
+              <Link to="/vaults/details">
               <img className="absolute top-0 left-0 w-full h-full object-center object-cover" src={imageURL} alt="vault-item" />
+              </Link>
                 {renderFavorite()}
               <div onMouseEnter={() => {
           setShowOptions(true);
