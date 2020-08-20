@@ -14,7 +14,8 @@ import {
     FETCH_ASSETS,
     FETCH_LIABILITIES,
     SET_INCOME,
-    SET_EXPENSE
+    SET_EXPENSE,
+    SET_PAGE
 } from "../actions/types";
 
 
@@ -80,6 +81,15 @@ const sideBarReducer = (show = false, action) => {
     }
 }
 
+const pageReducer = (oldPage = "/", action) => {
+    switch (action.type) {
+        case SET_PAGE:
+            return action.payload;
+        default:
+            return oldPage;
+    }
+}
+
 export default combineReducers({
     income: incomeReducer,
     expenses: expenseReducer,
@@ -87,5 +97,6 @@ export default combineReducers({
     expensesList: expenseListReducer,
     auth: authReducer,
     showSidebar: sideBarReducer,
-    vaultsState: vaultsReducer
+    vaultsState: vaultsReducer,
+    page: pageReducer
 })

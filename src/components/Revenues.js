@@ -1,8 +1,7 @@
 import React from 'react';
-import Modals from './Vaults/Modals'
 
 const Revenues = () => {
-    return <div><Modals /></div>
+    return <div></div>
 }
 
 export default Revenues;

@@ -3,6 +3,7 @@ import {
     SIGN_OUT,
     HIDE_SIDEBAR,
     SHOW_SIDEBAR,
+    SET_PAGE,
 } from "./types";
 
 import server from '../apis/server'
@@ -55,5 +56,12 @@ export const hideSidebar = () => {
 export const showSidebar = () => {
     return {
         type: SHOW_SIDEBAR
+    }
+}
+
+export const setPage = (page) => {
+    return {
+        type: SET_PAGE,
+        payload: page
     }
 }
