@@ -62,5 +62,7 @@
     "npm": "6.4.1",
     "node": "10.15.3"
   },
-  "proxy": "https://discordfenx.herokuapp.com/"
+  "proxy": "https://discordfenx.herokuapp.com/",
+  "keywords": [],
+  "description": "financial manager"
 }
