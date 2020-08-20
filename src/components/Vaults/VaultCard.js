@@ -78,7 +78,10 @@ const VaultCard = ({label, amount, id, userId, setVaultFavorite, fav, deleteVaul
         <div   className="bg-gray-900 rounded-lg shadow-lg overflow-hidden">
             <div className="image-box w-full relative bg-white" style={{paddingTop: '56.25%'}}>
               <Link to="/vaults/details">
-              <img className="absolute top-0 left-0 w-full h-full object-center object-cover" src={imageURL} alt="vault-item" />
+              <div className="absolute w-full h-full top-0 left-0 bg-gray-300 flex items-center justify-center">
+              <p className="text-gray-600 text-2xl font-bold">No Image</p>
+            </div>
+              <img className="absolute top-0 left-0 w-full h-full object-center object-cover" src={imageURL || null} alt="" />
               </Link>
                 {renderFavorite()}
               <div onMouseEnter={() => {
