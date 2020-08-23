@@ -17,6 +17,8 @@ export {
 } from './modals';
 
 export {
+    selectVault,
+    exitVault,
     vaultDeposit,
     vaultWithdraw,
     updateVault,

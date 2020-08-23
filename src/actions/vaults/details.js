@@ -8,8 +8,22 @@ import {
     FETCH_VAULT_TRANSACTIONS,
     CREATE_VAULT_TRANSACTION,
     SET_VAULT_GOAL,
-    REMOVE_VAULT_GOAL
+    REMOVE_VAULT_GOAL,
+    SELECT_VAULT,
+    EXIT_VAULT
 } from '../types';
+
+export const selectVault = (vaultId) => {
+    return {
+        type: SELECT_VAULT
+    }
+}
+
+export const exitVault = () => {
+    return {
+        type: EXIT_VAULT
+    }
+}
 
 export const vaultDeposit = (vaultId, amount) => {
     return {
