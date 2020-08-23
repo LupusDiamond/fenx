@@ -15,7 +15,8 @@ import {
 
 export const selectVault = (vaultId) => {
     return {
-        type: SELECT_VAULT
+        type: SELECT_VAULT,
+        payload: vaultId
     }
 }
 
@@ -27,13 +28,20 @@ export const exitVault = () => {
 
 export const vaultDeposit = (vaultId, amount) => {
     return {
-        type: VAULT_DEPOSIT
+        type: VAULT_DEPOSIT,
+        payload: {
+            vaultId,
+            amount
+        }
     }
 }
 
 export const vaultWithdraw = (vaultId, amount) => {
     return {
-        type: VAULT_WITHDRAW
+        type: VAULT_WITHDRAW,
+        payload: {
+            vaultId, amount
+        }
     }
 }
 
