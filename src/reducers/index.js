@@ -1,6 +1,7 @@
 import {combineReducers} from "redux";
 import authReducer from "./authReducer";
 import vaultsReducer from './vaults/index';
+import vaultDetailsReducer from './vaults/details';
 
 import {
     ADD_INCOME,
@@ -98,5 +99,6 @@ export default combineReducers({
     auth: authReducer,
     showSidebar: sideBarReducer,
     vaultsState: vaultsReducer,
-    page: pageReducer
+    page: pageReducer,
+    vaultDetails: vaultDetailsReducer
 })
