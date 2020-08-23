@@ -5,7 +5,6 @@ import {
     SET_VAULT_FAVORITE
 } from '../types';
 
-
 import server from '../../apis/server';
 
 export {
@@ -16,6 +15,19 @@ export {
     searchUnsplashImage,
     selectUnplashImage
 } from './modals';
+
+export {
+    vaultDeposit,
+    vaultWithdraw,
+    updateVault,
+    shareVault,
+    removeContributor,
+    fetchContributors,
+    fetchTransactions,
+    createTransaction,
+    setGoal,
+    removeGoal
+} from './details';
 
 export const fetchVaults = (userId) => async dispatch => {
     const vaults = await server.get(`/vaults/${userId}`);

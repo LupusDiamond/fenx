@@ -1,5 +1,5 @@
 
-// Dashboard Page
+/// Dashboard Page
 export const ADD_INCOME = 'ADD_INCOME';
 export const ADD_EXPENSE = 'ADD_EXPENSE';
 export const SET_INCOME = 'SET_INCOME';
@@ -14,11 +14,13 @@ export const REMOVE_EXPENSE_ITEM = 'REMOVE_EXPENSE_ITEM';
 export const REMOVE_INCOME_ITEM = 'REMOVE_INCOME_ITEM';
 
 /// Vaults Page
+
 // Vault Cards
 export const FETCH_VAULTS = 'FETCH_VAULTS';
 export const CREATE_VAULT = 'CREATE_VAULT';
 export const SET_VAULT_FAVORITE = 'SET_VAULT_FAVORITE';
 export const DELETE_VAULT = 'DELETE_VAULT';
+
 // Modals
 export const SHOW_CREATE_MODAL = 'SHOW_CREATE_MODAL';
 export const HIDE_CREATE_MODAL = 'HIDE_CREATE_MODAL';
@@ -31,11 +33,26 @@ export const HIDE_UNSPLASH_MODAL = 'HIDE_UNSPLASH_MODAL';
 export const SEARCH_UNSPLASH_IMAGE = 'SEARCH_UNSPLASH_IMAGE';
 export const SELECT_UNSPLASH_IMAGE = 'SELECT_UNSPLASH_IMAGE';
 
-// Authentication
+// Vault Details
+export const VAULT_DEPOSIT = 'VAULT_DEPOSIT';
+export const VAULT_WITHDRAW = 'VAULT_WITHDRAW';
+export const CHANGE_VAULT_DETAILS = 'CHANGE_VAULT_DETAILS';
+
+export const SHARE_VAULT = 'SHARE_VAULT';
+export const REMOVE_VAULT_CONTRIBUTOR = 'REMOVE_VAULT_CONTRIBUTOR';
+export const FETCH_VAULT_CONTRIBUTORS = 'FETCH_VAULT_CONTRIBUTORS';
+
+export const FETCH_VAULT_TRANSACTIONS = 'FETCH_VAULT_TRANSACTIONS';
+export const CREATE_VAULT_TRANSACTION = 'CREATE_VAULT_TRANSACTION';
+
+export const SET_VAULT_GOAL = 'SET_VAULT_GOAL';
+export const REMOVE_VAULT_GOAL = 'REMOVE_VAULT_GOAL';
+
+/// Authentication
 export const SIGN_IN = 'SIGN_IN';
 export const SIGN_OUT = 'SIGN_OUT';
 
-// Sidebar
+/// Sidebar
 export const HIDE_SIDEBAR = 'HIDE_SIDEBAR';
 export const SHOW_SIDEBAR = 'SHOW_SIDEBAR';
 export const SET_PAGE = 'SET_PAGE';

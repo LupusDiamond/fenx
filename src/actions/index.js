@@ -26,7 +26,17 @@ export {
 
 export {
     fetchVaults, createVault, setVaultFavorite, deleteVault, showUnsplashModal,
-    hideUnsplashModal, hideCreateModal, showCreateModal, searchUnsplashImage, selectUnplashImage
+    hideUnsplashModal, hideCreateModal, showCreateModal, searchUnsplashImage, selectUnplashImage,
+    vaultDeposit,
+    vaultWithdraw,
+    updateVault,
+    shareVault,
+    removeContributor,
+    fetchContributors,
+    fetchTransactions,
+    createTransaction,
+    setGoal,
+    removeGoal
 } from "./vaults";
 
 export const signIn = (userId, username, profilePicture) => async dispatch => {
