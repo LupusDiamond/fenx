@@ -39,11 +39,12 @@ export const fetchVaults = (userId) => async dispatch => {
     })
 }
 
-export const createVault = (userId, id, label, amount, imageUrl) => async dispatch => {
+export const createVault = (userId, id, label, amount, imageUrl, vaultId) => async dispatch => {
     await server.post(`/vaults/${userId}`, {
         "label": label,
         "totalAmount": amount,
-        "imageURL": imageUrl
+        "imageURL": imageUrl,
+        "vaultId": vaultId
     });
     return dispatch({
         type: CREATE_VAULT,

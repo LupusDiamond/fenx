@@ -1,9 +1,27 @@
 import React, { Component } from 'react'
 import LogsSVG from '../../../assets/svgs/Logs';
+import {connect} from 'react-redux';
+import {fetchTransactions} from '../../../actions';
 
 import Transaction from './Transaction';
+class Logs extends Component {
 
-export default class Logs extends Component {
+   componentDidUpdate(prevProps) {
+      if (prevProps.vaultId !== this.props.vaultId) {
+        console.log("maooo")
+        this.props.fetchTransactions(this.props.vaultId);
+      }
+   }
+
+    renderTransactions = () => {
+      if (this.props.vaultId !== null)
+      return this.props.transactions.map(transaction => {
+        return (
+          <Transaction />
+        )
+      })
+    }
+
     render() {
         return (
             <div className="flex-1 bg-white flex flex-col justify-between rounded-lg shadow-lg relative overflow-hidden">
@@ -22,7 +40,7 @@ export default class Logs extends Component {
             {/* Absolute line */}
             <div className="absolute w-full h-px bg-white bottom-0 left-0" />
             {/*Transactions here*/}
-            
+           {this.renderTransactions()}
           </div>
         </div>
         {/* View All */}
@@ -38,3 +56,15 @@ export default class Logs extends Component {
         )
     }
 }
+
+const mapStateToProps = (state) => {
+  return {
+    userId: state.auth.userId,
+    vaultId: state.vaultDetails.vaultId,
+    transactions: state.vaultDetails.transactions
+  };
+}
+
+export default connect(mapStateToProps, {
+  fetchTransactions
+})(Logs);

@@ -13,11 +13,14 @@ import {
     EXIT_VAULT
 } from '../types';
 
-export const selectVault = (vaultId) => {
-    return {
+import server from '../../apis/server';
+
+export const selectVault = (userId, vaultId) => async dispatch => {
+    const vault = await server.get(`/vaults/${userId}/${vaultId}`);
+    return dispatch({
         type: SELECT_VAULT,
-        payload: vaultId
-    }
+        payload: vault
+    });
 }
 
 export const exitVault = () => {
@@ -26,14 +29,18 @@ export const exitVault = () => {
     }
 }
 
-export const vaultDeposit = (vaultId, amount) => {
-    return {
+export const vaultDeposit = (userId, vaultId, amount) => async dispatch => {
+    const transaction = await server.post(`/posts/contribute/${userId}/${vaultId}`, {
+        "amount": amount,
+        "type": "DEPOSIT"
+    });
+    return dispatch({
         type: VAULT_DEPOSIT,
         payload: {
-            vaultId,
-            amount
+            amount,
+            type: "DEPOSIT"
         }
-    }
+    });
 }
 
 export const vaultWithdraw = (vaultId, amount) => {
@@ -69,10 +76,12 @@ export const fetchContributors = (vaultId) => {
     }
 }
 
-export const fetchTransactions = (vaultId) => {
-    return {
-        type: FETCH_VAULT_TRANSACTIONS
-    }
+export const fetchTransactions = (vaultId) => async dispatch => {
+    const transactions = await server.get(`/vaults/transactions/${vaultId}`);
+    return dispatch({
+        type: FETCH_VAULT_TRANSACTIONS,
+        payload: transactions
+    })
 }
 
 export const createTransaction = (vaultId, name, amount, action) => {

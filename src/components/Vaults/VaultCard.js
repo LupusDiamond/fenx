@@ -1,9 +1,9 @@
 import React, {useState} from 'react';
 import {connect} from 'react-redux';
 import {Link} from 'react-router-dom'
-import {setVaultFavorite, deleteVault} from '../../actions';
+import {setVaultFavorite, deleteVault, selectVault} from '../../actions';
 
-const VaultCard = ({label, amount, id, userId, setVaultFavorite, fav, deleteVault, imageURL}) => {
+const VaultCard = ({label, amount, id, userId, setVaultFavorite, fav, deleteVault, imageURL, selectVault}) => {
 
     const [showOptions, setShowOptions] = useState(false);
     const [favorite, setFavorite] = useState(fav);
@@ -74,8 +74,12 @@ const VaultCard = ({label, amount, id, userId, setVaultFavorite, fav, deleteVaul
         } else return null;
     }
 
+    const onVaultClick = () => {
+      selectVault(userId, id);
+    }
+
     return (
-        <div   className="bg-gray-900 rounded-lg shadow-lg overflow-hidden">
+        <div onClick={() => onVaultClick()}  className="bg-gray-900 rounded-lg shadow-lg overflow-hidden">
             <div className="image-box w-full relative bg-white" style={{paddingTop: '56.25%'}}>
               <Link to="/vaults/details">
               <div className="absolute w-full h-full top-0 left-0 bg-gray-300 flex items-center justify-center">
@@ -111,5 +115,5 @@ const mapStateToProps = (state) => {
 
 
 export default connect(mapStateToProps, {
-setVaultFavorite, deleteVault
+setVaultFavorite, deleteVault, selectVault
 })(VaultCard);

@@ -1,7 +1,7 @@
 import React from 'react'
 import VaultCard from './VaultCard';
 import VaultHeader from './VaultHeader';
-import {fetchVaults} from '../../actions'
+import {fetchVaults,selectVault} from '../../actions'
 import {connect} from 'react-redux';
 import Modals from './Modals';
 
@@ -26,7 +26,7 @@ class Vaults extends React.Component {
         return sortedVaults.map(vault => {
             return <VaultCard 
                 key={vault._id}
-                id={vault._id}
+                id={vault.vaultId}
                 label={vault.label}
                 amount={vault.totalAmount}
                 imageURL={vault.imageURL}
@@ -60,5 +60,5 @@ const mapStateToProps = (state) => {
 }
 
 export default connect(mapStateToProps, {
-    fetchVaults
+    fetchVaults, selectVault
 })(Vaults);

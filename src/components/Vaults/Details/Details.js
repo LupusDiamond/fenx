@@ -2,7 +2,8 @@ import React, { Component } from 'react'
 import IdentitySVG from '../../../assets/svgs/IdentityCard';
 
 import UnsplashSVG from '../../../assets/svgs/Unsplash';
-export default class Details extends Component {
+import { connect } from 'react-redux';
+class Details extends Component {
     render() {
         return (
             <div className="md:col-span-2 bg-white rounded-lg shadow-lg p-6 grid grid-cols-1 md:grid-cols-2 gap-6 overflow-hidden">
@@ -46,8 +47,8 @@ export default class Details extends Component {
             </div>
             <img
               className="absolute top-0 left-0 object-cover h-full w-full flex-1 flex-shrink-0"
-              src
-              alt
+              src={this.props.imageURL}
+              alt=""
             />
             <div className="absolute bottom-0 right-0 m-2 p-1 bg-white rounded-full shadow-base">
               <UnsplashSVG />
@@ -141,3 +142,9 @@ export default class Details extends Component {
         )
     }
 }
+
+const mapStateToProps = (state) => {
+  return {imageURL: state.vaultDetails.imageURL}
+}
+
+export default connect(mapStateToProps)(Details);
