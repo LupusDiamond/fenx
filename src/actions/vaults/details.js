@@ -29,27 +29,42 @@ export const exitVault = () => {
     }
 }
 
-export const vaultDeposit = (userId, vaultId, amount) => async dispatch => {
-    const transaction = await server.post(`/posts/contribute/${userId}/${vaultId}`, {
+export const vaultDeposit = (username, vaultId, amount, imageURL) => async dispatch => {
+    const transaction = await server.post(`/vaults/contribute/${vaultId}`, {
         "amount": amount,
-        "type": "DEPOSIT"
+        "type": "DEPOSIT",
+        "username": username,
+        "imageURL": imageURL
     });
     return dispatch({
         type: VAULT_DEPOSIT,
         payload: {
             amount,
-            type: "DEPOSIT"
+            type: "DEPOSIT",
+            username,
+            imageURL,
+            date: "Now"
         }
     });
 }
 
-export const vaultWithdraw = (vaultId, amount) => {
-    return {
+export const vaultWithdraw = (username, vaultId, amount, imageURL) => async dispatch => {
+    const transaction = await server.post(`/vaults/contribute/${vaultId}`, {
+        "amount": amount,
+        "type": "WITHDRAW",
+        "username": username,
+        "imageURL": imageURL
+    });
+    return dispatch({
         type: VAULT_WITHDRAW,
         payload: {
-            vaultId, amount
+            amount,
+            type: "WITHDRAW",
+            username,
+            imageURL,
+            date: "Now"
         }
-    }
+    })
 }
 
 export const updateVault = (vaultId, label, amount, imageURL) => {

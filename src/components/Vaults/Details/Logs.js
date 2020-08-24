@@ -8,7 +8,6 @@ class Logs extends Component {
 
    componentDidUpdate(prevProps) {
       if (prevProps.vaultId !== this.props.vaultId) {
-        console.log("maooo")
         this.props.fetchTransactions(this.props.vaultId);
       }
    }
@@ -17,7 +16,9 @@ class Logs extends Component {
       if (this.props.vaultId !== null)
       return this.props.transactions.map(transaction => {
         return (
-          <Transaction />
+          <Transaction amount={transaction.amount} type={transaction.type} date={transaction.date}
+            username={transaction.username} imageURL={transaction.imageURL}
+          />
         )
       })
     }

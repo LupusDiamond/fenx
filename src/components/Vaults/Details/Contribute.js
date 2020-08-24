@@ -1,8 +1,35 @@
-import React, { Component } from 'react'
+import React, { Component } from 'react';
+import {connect} from 'react-redux';
+import {vaultDeposit, vaultWithdraw} from '../../../actions';
 
 import CashSVG from '../../../assets/svgs/Cash';
 
-export default class Contribute extends Component {
+class Contribute extends Component {
+
+    state = {
+      input: ''
+    }
+
+    onDepositClick = () => {
+      this.props.vaultDeposit(
+        this.props.username,
+        this.props.vaultId,
+        parseInt(this.state.input),
+        this.props.imageUrl
+      );
+      this.setState({input: ''})
+    }
+
+    onWithdrawClick = () => {
+      this.props.vaultWithdraw(
+        this.props.username,
+        this.props.vaultId,
+        parseInt(this.state.input),
+        this.props.imageUrl
+      );
+      this.setState({input: ''})
+    }
+
     render() {
         return (
 
@@ -22,12 +49,15 @@ export default class Contribute extends Component {
         name="Amount"
         id="Amount"
         placeholder="$000"
+        value={this.state.input}
+        onChange={e => this.setState({input: e.target.value})}
+        autoComplete="off"
       />
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-        <button className="text-white text-base font-semibold p-2 uppercase tracking-wider rounded-lg focus:outline-none focus:shadow-outline bg-gray-900 hover:bg-gray-800 border-2 border-gray-900">
+        <button onClick={() => this.onDepositClick()} className="text-white text-base font-semibold p-2 uppercase tracking-wider rounded-lg focus:outline-none focus:shadow-outline bg-gray-900 hover:bg-gray-800 border-2 border-gray-900">
           Deposit
         </button>
-        <button className="text-gray-900 text-base font-semibold p-2 uppercase tracking-wider rounded-lg focus:outline-none focus:shadow-outline border-2 border-gray-900">
+        <button onClick={() => this.onWithdrawClick()} className="text-gray-900 text-base font-semibold p-2 uppercase tracking-wider rounded-lg focus:outline-none focus:shadow-outline border-2 border-gray-900">
           Withdraw
         </button>
       </div>
@@ -35,3 +65,15 @@ export default class Contribute extends Component {
         )
     }
 }
+
+const mapStateToProps = (state) => {
+  return {
+    username: state.auth.username,
+    vaultId: state.vaultDetails.vaultId,
+    imageUrl: state.auth.profilePicture
+  }
+}
+
+export default connect(mapStateToProps, {
+  vaultDeposit, vaultWithdraw
+})(Contribute);

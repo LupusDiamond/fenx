@@ -4,6 +4,7 @@ import IdentitySVG from '../../../assets/svgs/IdentityCard';
 import UnsplashSVG from '../../../assets/svgs/Unsplash';
 import { connect } from 'react-redux';
 class Details extends Component {
+
     render() {
         return (
             <div className="md:col-span-2 bg-white rounded-lg shadow-lg p-6 grid grid-cols-1 md:grid-cols-2 gap-6 overflow-hidden">
@@ -63,7 +64,7 @@ class Details extends Component {
               htmlFor="name"
               className="text-xs md:text-sm uppercase text-gray-700 mb-1 flex"
             >
-              Name
+              Label
             </label>
             <div className="w-full relative mb-3">
               <input
@@ -71,7 +72,8 @@ class Details extends Component {
                 type="text"
                 name="name"
                 id="name"
-                placeholder="Car, House etc"
+                placeholder={this.props.label}
+                
               />
               <div className="w-12 h-full absolute top-0 right-0 flex justify-center items-center rounded-lg">
                 <button className="p-2 focus:outline-none focus:shadow-outline rounded-lg">
@@ -107,7 +109,7 @@ class Details extends Component {
                 type="text"
                 name="Amount"
                 id="Amount"
-                placeholder="$000"
+                placeholder={this.props.amount}
               />
               <div className="w-12 h-full absolute top-0 right-0 flex justify-center items-center rounded-lg">
                 <button className="p-2 focus:outline-none focus:shadow-outline rounded-lg">
@@ -144,7 +146,11 @@ class Details extends Component {
 }
 
 const mapStateToProps = (state) => {
-  return {imageURL: state.vaultDetails.imageURL}
+  return {
+    imageURL: state.vaultDetails.imageURL,
+    label: state.vaultDetails.label,
+    amount: state.vaultDetails.totalAmount
+  }
 }
 
 export default connect(mapStateToProps)(Details);

@@ -29,17 +29,19 @@ const INITIAL_STATE = {
 }
 
 export default (oldState = INITIAL_STATE, action) => {
+    const oldTransactions = oldState.transactions;
     switch (action.type) {
         case SELECT_VAULT: 
         console.log(action.payload);
-            return {...oldState, imageURL: action.payload.data.imageURL, vaultId: action.payload.data.vaultId};
+            return {...oldState, imageURL: action.payload.data.imageURL, vaultId: action.payload.data.vaultId, label: action.payload.data.label,
+                totalAmount: action.payload.data.totalAmount
+            };
         case EXIT_VAULT:
             oldState = {oldState, ...INITIAL_STATE};
         case VAULT_DEPOSIT:
-            const oldTransactions = oldState.transactions;
             return {...oldState, transactions: [...oldTransactions, action.payload]};
         case VAULT_WITHDRAW:
-            return {...oldState, depositedAmount: oldState.depositedAmount - action.payload.amount};
+            return {...oldState, transactions: [...oldTransactions, action.payload]};
         case FETCH_VAULT_TRANSACTIONS:
             console.log(action.payload);
             return {...oldState, transactions: action.payload.data}
