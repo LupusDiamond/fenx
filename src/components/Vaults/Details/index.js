@@ -10,7 +10,7 @@ import Header from './Header';
 export default class VaultDetails extends Component {
     render() {
         return (
-        <div className="max-w-screen-xl w-full mx-auto px-6 mb-6">
+        <div className="max-w-screen-xl w-full mx-auto px-6 mb-6 pt-6">
         <div className="w-full grid grid-cols-1 lg:grid-cols-3 gap-6">
           <Header />
           <div className="lg:col-span-2 grid grid-cols-1 md:grid-cols-2 gap-6">

@@ -1,5 +1,8 @@
 import React, { Component } from 'react'
 import LogsSVG from '../../../assets/svgs/Logs';
+
+import Transaction from './Transaction';
+
 export default class Logs extends Component {
     render() {
         return (
@@ -18,78 +21,8 @@ export default class Logs extends Component {
           <div className="w-full flex flex-col relative px-6 mb-6">
             {/* Absolute line */}
             <div className="absolute w-full h-px bg-white bottom-0 left-0" />
-            {/* Repeatable Start */}
-            <div className="flex justify-between py-3 border-b border-gray-300">
-              {/* Image + Name */}
-              <div className="flex">
-                <img
-                  src="./images/tepes.jpg"
-                  alt
-                  className="h-10 w-10 object-cover border-2 border-gray-300 rounded-full shadow flex-shrink-0 mr-2"
-                />
-                <flex className="flex-col justify-between">
-                  <h3 className="text-gray-900 md:text-lg font-semibold -mt-px truncate w-32 xl:w-48">
-                    Tepes Alexandru
-                  </h3>
-                  <p className="text-xs text-gray-700 uppercase">
-                    August 12, 2020
-                  </p>
-                </flex>
-              </div>
-              {/* Amount */}
-              <p className="md:text-xl font-semibold text-green-800 -mt-1 flex-shrink-0 pl-6">
-                $200
-              </p>
-            </div>
-            {/* End */}
-            {/* Repeatable Start */}
-            <div className="flex justify-between py-3 border-b border-gray-300">
-              {/* Image + Name */}
-              <div className="flex">
-                <img
-                  src="./images/tepes.jpg"
-                  alt
-                  className="h-10 w-10 object-cover border-2 border-gray-300 rounded-full shadow flex-shrink-0 mr-2"
-                />
-                <flex className="flex-col justify-between">
-                  <h3 className="text-gray-900 md:text-lg font-semibold -mt-px truncate w-32 xl:w-48">
-                    Rishi
-                  </h3>
-                  <p className="text-xs text-gray-700 uppercase">
-                    August 11, 2020
-                  </p>
-                </flex>
-              </div>
-              {/* Amount */}
-              <p className="md:text-xl font-semibold text-red-800 -mt-1 flex-shrink-0 pl-6">
-                -$2000
-              </p>
-            </div>
-            {/* End */}
-            {/* Repeatable Start */}
-            <div className="flex justify-between py-3 border-b border-gray-300">
-              {/* Image + Name */}
-              <div className="flex">
-                <img
-                  src="./images/tepes.jpg"
-                  alt
-                  className="h-10 w-10 object-cover border-2 border-gray-300 rounded-full shadow flex-shrink-0 mr-2"
-                />
-                <flex className="flex-col justify-between">
-                  <h3 className="text-gray-900 md:text-lg font-semibold -mt-px truncate w-32 xl:w-48">
-                    Iron Man
-                  </h3>
-                  <p className="text-xs text-gray-700 uppercase">
-                    August 11, 2020
-                  </p>
-                </flex>
-              </div>
-              {/* Amount */}
-              <p className="md:text-xl font-semibold text-green-800 -mt-1 flex-shrink-0 pl-6">
-                $3000
-              </p>
-            </div>
-            {/* End */}
+            {/*Transactions here*/}
+            
           </div>
         </div>
         {/* View All */}
