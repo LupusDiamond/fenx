@@ -11,7 +11,7 @@ import {
     REMOVE_VAULT_GOAL,
     SELECT_VAULT,
     EXIT_VAULT
-} from '../../actions';
+} from '../../actions/types';
 
 const INITIAL_STATE = {
     vaultId: '',

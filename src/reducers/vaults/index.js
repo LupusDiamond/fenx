@@ -21,7 +21,7 @@ const INITIAL_STATE = {
 export default (state = INITIAL_STATE, action) => {
     switch (action.type) {
         case FETCH_VAULTS:
-            return {...state, vaults: action.payload.data};
+            return {...state, vaults: action.payload.data.array};
         case CREATE_VAULT:
             const oldVaults = state.vaults;
             return {...state, vaults: [...oldVaults, action.payload]};

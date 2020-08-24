@@ -10,7 +10,7 @@ import SideBar from './Sidebar/Sidebar';
 import Landing from './Landing/Landing';
 import Dashboard from './Dashboard/Dashboard';
 import Vaults from './Vaults/Vaults';
-import VaultDetails from './Vaults/VaultDetails';
+import VaultDetails from './Vaults/Details';
 import Revenues from './Revenues';
 
 class App extends Component {

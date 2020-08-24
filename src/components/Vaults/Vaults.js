@@ -33,6 +33,7 @@ class Vaults extends React.Component {
                 fav={vault.favorite}
             />
         })
+        console.log(this.props.vaults);
     }
 
     render() {
