@@ -67,10 +67,16 @@ export const vaultWithdraw = (username, vaultId, amount, imageURL) => async disp
     })
 }
 
-export const updateVault = (vaultId, label, amount, imageURL) => {
-    return {
-        type: CHANGE_VAULT_DETAILS
-    }
+export const updateVault = (userId, vaultId, label, amount, imageURL) => async dispatch => {
+    const updatedVault = await server.patch(`/vaults/update/${userId}/${vaultId}`, {
+        "label": label,
+        "amount": amount,
+        "imageURL": imageURL
+    });
+    return dispatch({
+        type: CHANGE_VAULT_DETAILS,
+        payload: updatedVault
+    })
 }
 
 export const shareVault = (vaultId) => {

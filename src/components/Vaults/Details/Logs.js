@@ -13,14 +13,18 @@ class Logs extends Component {
    }
 
     renderTransactions = () => {
-      if (this.props.vaultId !== null)
-      return this.props.transactions.map(transaction => {
-        return (
-          <Transaction amount={transaction.amount} type={transaction.type} date={transaction.date}
-            username={transaction.username} imageURL={transaction.imageURL}
-          />
-        )
-      })
+      if (this.props.vaultId !== null) {
+        let threeTransactions = this.props.transactions.slice(Math.max(this.props.transactions.length - 3, 1));
+        threeTransactions= threeTransactions.reverse();
+        return threeTransactions.map(transaction => {
+          return (
+            <Transaction amount={transaction.amount} type={transaction.type} date={transaction.date}
+              username={transaction.username} imageURL={transaction.imageURL}
+            />
+          )
+        })
+      }
+      
     }
 
     render() {

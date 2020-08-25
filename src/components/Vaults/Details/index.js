@@ -6,8 +6,16 @@ import Details from './Details';
 import SharedWith from './SharedWith';
 import Transactions from './Logs';
 import Header from './Header';
+import Modals from '../Modals';
+import { connect } from 'react-redux';
 
-export default class VaultDetails extends Component {
+class VaultDetails extends Component {
+
+  renderModals = () => {
+    if (this.props.showUnsplashModal) return <Modals />
+    return null;
+  }
+
     render() {
         return (
         <div className="max-w-screen-xl w-full mx-auto px-6 mb-6 pt-6">
@@ -23,7 +31,14 @@ export default class VaultDetails extends Component {
             <Transactions />
           </div>
         </div>
+        {this.renderModals()}
         </div>
         )
     }
 }
+
+const mapStateToProps = (state) => {
+  return {showUnsplashModal: state.vaultsState.showUnsplashModal}
+}
+
+export default connect(mapStateToProps)(VaultDetails);

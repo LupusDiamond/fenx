@@ -37,7 +37,8 @@ export default (oldState = INITIAL_STATE, action) => {
                 totalAmount: action.payload.data.totalAmount
             };
         case EXIT_VAULT:
-            oldState = {oldState, ...INITIAL_STATE};
+            oldState = INITIAL_STATE;
+            return oldState;
         case VAULT_DEPOSIT:
             return {...oldState, transactions: [...oldTransactions, action.payload]};
         case VAULT_WITHDRAW:

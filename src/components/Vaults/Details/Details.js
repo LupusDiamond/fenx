@@ -3,7 +3,45 @@ import IdentitySVG from '../../../assets/svgs/IdentityCard';
 
 import UnsplashSVG from '../../../assets/svgs/Unsplash';
 import { connect } from 'react-redux';
+import {updateVault, showUnsplashModal, showCreateModal, hideCreateModal, hideUnsplashModal} from '../../../actions';
+
 class Details extends Component {
+
+    state = {
+      input: '',
+      amount: '',
+      imageURL: '',
+    }
+
+    componentDidUpdate(prevProps) {
+      if (prevProps.label !== this.props.label) {
+        this.setState({input: this.props.label});
+      };
+      if (prevProps.amount !== this.props.amount) {
+        this.setState({amount: this.props.amount});
+      }
+      if (prevProps.imageURL !== this.props.imageURL && this.props.imageURL !== '') {
+        this.setState({imageURL: this.props.imageURL});
+      }
+      if (prevProps.unsplashImage !== this.props.unsplashImage && this.props.unsplashImage !== '') {
+        this.setState({imageURL: this.props.unsplashImage})
+        this.props.hideCreateModal();
+      }
+    }
+
+    onSaveChangesClick = () => {
+      this.props.updateVault(this.props.userId, this.props.vaultId, this.state.input, parseInt(this.state.amount), this.state.imageURL);
+      this.setState({
+        input: '',
+        amount: ''
+      })
+    }
+
+    onUnsplashClick = () => {
+      this.props.showUnsplashModal();
+    }
+
+    
 
     render() {
         return (
@@ -48,10 +86,10 @@ class Details extends Component {
             </div>
             <img
               className="absolute top-0 left-0 object-cover h-full w-full flex-1 flex-shrink-0"
-              src={this.props.imageURL}
+              src={this.state.imageURL}
               alt=""
             />
-            <div className="absolute bottom-0 right-0 m-2 p-1 bg-white rounded-full shadow-base">
+            <div onClick={() => this.onUnsplashClick()} className="absolute bottom-0 right-0 m-2 p-1 bg-white rounded-full shadow-base">
               <UnsplashSVG />
             </div>
           </div>
@@ -73,7 +111,9 @@ class Details extends Component {
                 name="name"
                 id="name"
                 placeholder={this.props.label}
-                
+                value={this.state.input}
+                onChange={(e) => this.setState({input: e.target.value})}
+                autoComplete="off"
               />
               <div className="w-12 h-full absolute top-0 right-0 flex justify-center items-center rounded-lg">
                 <button className="p-2 focus:outline-none focus:shadow-outline rounded-lg">
@@ -110,6 +150,9 @@ class Details extends Component {
                 name="Amount"
                 id="Amount"
                 placeholder={this.props.amount}
+                value={this.state.amount}
+                onChange={(e) => this.setState({amount: e.target.value})}
+                autoComplete="off"
               />
               <div className="w-12 h-full absolute top-0 right-0 flex justify-center items-center rounded-lg">
                 <button className="p-2 focus:outline-none focus:shadow-outline rounded-lg">
@@ -135,22 +178,30 @@ class Details extends Component {
           </div>
           {/* Buttons */}
           <div className="w-full grid sm:flex">
-            <button className="text-gray-900 text-base font-semibold py-2 px-6 uppercase tracking-wider rounded-lg focus:outline-none focus:shadow-outline border-2 border-gray-900">
+            <button onClick={() => this.onSaveChangesClick()} className="text-gray-900 text-base font-semibold py-2 px-6 uppercase tracking-wider rounded-lg focus:outline-none focus:shadow-outline border-2 border-gray-900">
               Save Changes
             </button>
           </div>
         </div>
+        
       </div>
         )
     }
 }
 
 const mapStateToProps = (state) => {
+  console.log("map state!")
   return {
+    userId: state.auth.userId,
+    vaultId: state.vaultDetails.vaultId,
     imageURL: state.vaultDetails.imageURL,
     label: state.vaultDetails.label,
-    amount: state.vaultDetails.totalAmount
+    amount: state.vaultDetails.totalAmount,
+    showUnsplashModal: state.vaultsState.showUnsplashModal,
+    unsplashImage: state.vaultsState.modalPreviewImage
   }
 }
 
-export default connect(mapStateToProps)(Details);
+export default connect(mapStateToProps, {
+  updateVault, showUnsplashModal, showCreateModal, hideUnsplashModal, hideCreateModal
+})(Details);
