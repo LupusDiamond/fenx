@@ -28,7 +28,9 @@ export {
     fetchTransactions,
     createTransaction,
     setGoal,
-    removeGoal
+    removeGoal,
+    activateGoal,
+    fetchGoal
 } from './details';
 
 export const fetchVaults = (userId) => async dispatch => {

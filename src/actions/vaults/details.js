@@ -10,7 +10,9 @@ import {
     SET_VAULT_GOAL,
     REMOVE_VAULT_GOAL,
     SELECT_VAULT,
-    EXIT_VAULT
+    EXIT_VAULT,
+    FETCH_GOAL,
+    ACTIVATE_GOAL
 } from '../types';
 
 import server from '../../apis/server';
@@ -109,6 +111,21 @@ export const createTransaction = (vaultId, name, amount, action) => {
     return {
         type: CREATE_VAULT_TRANSACTION
     }
+}
+
+export const fetchGoal = (vaultId) => async dispatch => {
+    const hasGoal = await server.get(`/vaults/goals/${vaultId}`);
+    return dispatch({
+        type: FETCH_GOAL,
+        payload: hasGoal
+    })
+}
+
+export const activateGoal = (vaultId) => async dispatch => {
+    const activateGoal = await server.patch(`/vaults/goals/activate/${vaultId}`);
+    return dispatch({
+        type: ACTIVATE_GOAL
+    })
 }
 
 export const setGoal = (vaultId, deadline, amount, format) => {

@@ -27,7 +27,7 @@ export {
 export {
     fetchVaults, createVault, setVaultFavorite, deleteVault, showUnsplashModal,
     hideUnsplashModal, hideCreateModal, showCreateModal, searchUnsplashImage, selectUnplashImage,
-    vaultDeposit, selectVault, exitVault,
+    vaultDeposit, selectVault, exitVault, activateGoal, fetchGoal,
     vaultWithdraw,
     updateVault,
     shareVault,
