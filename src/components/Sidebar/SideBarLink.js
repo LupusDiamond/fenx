@@ -1,8 +1,7 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
 import {connect} from 'react-redux';
-import {setPage} from '../../actions';
-import {hideSidebar} from '../../features';
+import {hideSidebar, setPage} from '../../features';
 import { motion } from 'framer-motion';
 
 const SideBarLink = ({destination, text, hideSidebar, page, setPage}) => {
@@ -45,7 +44,7 @@ const SideBarLink = ({destination, text, hideSidebar, page, setPage}) => {
 }
 
 const mapStateToProps = (state) => {
-    return {page: state.page}
+    return {page: state.global.page}
 }
 
 export default connect(mapStateToProps, {

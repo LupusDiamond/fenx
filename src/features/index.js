@@ -1,7 +1,16 @@
 export {
-    vaultSlice, fetchVaults, createVault
+    storageSlice, fetchVaults, createVault, deleteVault
 } from './storage/index'
 export {
-    sidebarSlice, showSidebar, hideSidebar
-} from './sidebar';
-
+    userSlice, signIn, signOut
+} from './user';
+export {
+    globalSlice, setPage
+} from './global';
+export {
+    uiSlice, showCreateModal, showUnsplashModal, hideCreateModal, hideUnsplashModal,
+    showSidebar, hideSidebar, searchUnsplash, selectUnplashImage
+} from './ui';
+export {
+    blitzSlice
+} from './blitz/index';

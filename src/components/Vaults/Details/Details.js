@@ -3,7 +3,8 @@ import IdentitySVG from '../../../assets/svgs/IdentityCard';
 
 import UnsplashSVG from '../../../assets/svgs/Unsplash';
 import { connect } from 'react-redux';
-import {updateVault, showUnsplashModal, showCreateModal, hideCreateModal, hideUnsplashModal} from '../../../actions';
+import {updateVault} from '../../../actions';
+import { showUnsplashModal, showCreateModal, hideCreateModal, hideUnsplashModal} from '../../../features';
 
 class Details extends Component {
 

@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import {connect} from 'react-redux';
-import {signIn, signOut} from '../../actions';
 
 class GoogleAuth extends Component {
 
@@ -23,6 +22,7 @@ class GoogleAuth extends Component {
     }
 
     onSignOutClick = () => {
+        
         window.gapi.auth2.getAuthInstance().signOut();
     }
 
@@ -34,9 +34,8 @@ class GoogleAuth extends Component {
 }
 
 const mapStateToProps = (state) => {
-    return {isSignedIn: state.auth.isSignedIn, userId: state.auth.userId};
+    return {isSignedIn: state.user.isSignedIn, userId: state.user.userId};
 }
 
 export default connect(mapStateToProps, {
-    signIn, signOut
 })(GoogleAuth);

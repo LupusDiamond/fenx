@@ -9,6 +9,7 @@ import Modals from './Modals';
 class Vaults extends React.Component {
 
     componentDidMount() {
+        if (this.props.userId !== null || this.props.userId !== undefined)
         this.props.fetchVaults(this.props.userId);
     }
 
@@ -52,8 +53,8 @@ class Vaults extends React.Component {
 }
 
 const mapStateToProps = (state) => {
-    return {showCreateModal: state.vaultsState.showCreateModal, vaults:state.vaults.vaults, userId: state.auth.userId,
-        showUnsplashModal: state.vaultsState.showUnsplashModal
+    return {showCreateModal: state.ui.showCreateModal, vaults:state.vaults.vaults, userId: state.user.userId,
+        showUnsplashModal: state.ui.showUnsplashModal
     };
 }
 

@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import {connect} from 'react-redux';
-import {showUnsplashModal} from '../../actions';
+import {showUnsplashModal} from '../../features';
 
 class ImagePreviewModal extends Component {
 
@@ -50,7 +50,7 @@ class ImagePreviewModal extends Component {
 }
 
 const mapStateToProps = (state) => {
-  return {showModal: state.vaultsState.showCreateModal, imageUrl: state.vaultsState.modalPreviewImage};
+  return {showModal: state.ui.showCreateModal, imageUrl: state.ui.selectedUnsplashImage};
 }
 
 export default connect(mapStateToProps, {

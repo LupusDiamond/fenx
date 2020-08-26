@@ -1,11 +1,10 @@
 import React, { createRef } from "react";
 import {connect} from 'react-redux';
 import "../../assets/tailwind.css";
-import { signOut, signIn } from "../../actions";
 import GoogleAuth from "../Landing/GoogleAuth";
 import Cross from "../../assets/svgs/Cross";
 import SideBarLink from "./SideBarLink";
-import {hideSidebar} from '../../features';
+import {hideSidebar, signOut} from '../../features';
 
 
 class SideBar extends React.Component {
@@ -89,13 +88,13 @@ class SideBar extends React.Component {
 
 const mapStateToProps = (state) => {
   return {
-    isSignedIn: state.auth.isSignedIn,
-    username: state.auth.username,
-    profilePicture: state.auth.profilePicture,
-    showSidebar: state.sidebar
+    isSignedIn: state.user.isSignedIn,
+    username: state.user.username,
+    profilePicture: state.user.profilePicture,
+    showSidebar: state.ui.showSidebar
   };
 }
 
 export default connect(mapStateToProps, {
-  signOut, signIn, hideSidebar
+  signOut, hideSidebar
 })(SideBar);

@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import {connect} from 'react-redux';
-import {searchUnsplashImage, hideUnsplashModal, selectUnplashImage} from '../../actions'
+import {hideUnsplashModal, searchUnsplash, selectUnplashImage} from '../../features';
 
 class SelectImageModal extends Component {
 
@@ -28,7 +28,7 @@ class SelectImageModal extends Component {
     }
 
     onSubmitClick = (e) => {
-      this.props.searchUnsplashImage(this.state.searchTerm);
+      this.props.searchUnsplash(this.state.searchTerm);
     }
 
     onBackClick = () => {
@@ -65,9 +65,9 @@ class SelectImageModal extends Component {
 }
 
 const mapStateToProps = (state) => {
-    return {showModal: state.vaultsState.showUnsplashModal, imageList: state.vaultsState.images};
+    return {showModal: state.ui.showUnsplashModal, imageList: state.ui.unsplashImages};
 }
 
 export default connect(mapStateToProps, {
-  searchUnsplashImage, hideUnsplashModal, selectUnplashImage
+  searchUnsplash, hideUnsplashModal, selectUnplashImage
 })(SelectImageModal);

@@ -45,7 +45,7 @@ const Landing = (props) => {
 };
 
 const mapStateToProps = (state) => {
-  return { isSignedIn: state.auth.isSignedIn, userId: state.auth.userId };
+  return { isSignedIn: state.user.isSignedIn, userId: state.user.userId };
 };
 
 export default connect(mapStateToProps, {

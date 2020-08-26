@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import {connect} from 'react-redux';
-import {hideCreateModal} from '../../actions';
+import {hideCreateModal} from '../../features';
 import {createVault} from '../../features';
 import {v4 as uuidv4} from 'uuid';
 
@@ -23,9 +23,10 @@ class InputFieldsModal extends Component {
     }
 
     onSaveClick = () => {
+      this.counter++;
       const information = {
         userId: this.props.userId,
-        id: ++this.counter,
+        id: this.counter,
         label: this.state.label,
         amount: this.state.amount,
         imageUrl: this.props.imageUrl,
@@ -65,8 +66,8 @@ class InputFieldsModal extends Component {
 }
 
 const mapStateToProps = (state) => {
-  return {showModal: state.vaultsState.showCreateModal, imageUrl: state.vaultsState.modalPreviewImage,
-    userId: state.auth.userId
+  return {showModal: state.ui.showCreateModal, imageUrl: state.vaultsState.modalPreviewImage,
+    userId: state.user.userId
   };
 }
 

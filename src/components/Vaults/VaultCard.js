@@ -1,7 +1,8 @@
 import React, {useState} from 'react';
 import {connect} from 'react-redux';
 import {Link} from 'react-router-dom'
-import {setVaultFavorite, deleteVault, selectVault} from '../../actions';
+import {setVaultFavorite, selectVault} from '../../actions';
+import {deleteVault} from '../../features';
 
 const VaultCard = ({label, amount, id, userId, setVaultFavorite, fav, deleteVault, imageURL, selectVault}) => {
 

@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import {BrowserRouter, Route, Redirect} from 'react-router-dom';
 import {connect} from 'react-redux';
-import {signIn, signOut} from '../actions';
+import {signIn, signOut} from '../features';
 
 import Header from './Header';
 import SideBar from './Sidebar/Sidebar';
@@ -30,12 +30,18 @@ class App extends Component {
     }
 
     onAuthChange = async (isSignedIn) => {
+      console.log("helo1")
       if (isSignedIn) {
           let userid = await this.auth.currentUser.get().getId();
           let username = await this.auth.currentUser.get().getBasicProfile().getName();
           let profilepic = await this.auth.currentUser.get().getBasicProfile().getImageUrl();
           if (username === undefined) return;
-          this.props.signIn(userid, username, profilepic);
+          const information = {
+            userId: userid,
+            username,
+            profilePicture: profilepic
+          }
+          this.props.signIn(information);
       } else {
           this.props.signOut();
       }
@@ -93,9 +99,9 @@ class App extends Component {
 
   const mapStateToProps = (state) => {
     return {
-      isSignedIn: state.auth.isSignedIn,
-      showSidebar: state.sidebar,
-      userId: state.auth.userId
+      isSignedIn: state.user.isSignedIn,
+      showSidebar: state.ui.showSidebar,
+      userId: state.user.userId
     }
   }
 

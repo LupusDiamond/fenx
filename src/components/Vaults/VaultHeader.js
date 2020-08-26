@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { showCreateModal } from "../../actions/vaults/modals";
+import { showCreateModal } from "../../features";
 
 class VaultHeader extends Component {
   state = {
