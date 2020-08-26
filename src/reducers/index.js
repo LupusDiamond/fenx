@@ -2,6 +2,7 @@ import {combineReducers} from "redux";
 import authReducer from "./authReducer";
 import vaultsReducer from './vaults/index';
 import vaultDetailsReducer from './vaults/details';
+import {sidebarSlice, vaultSlice} from '../features';
 
 import {
     ADD_INCOME,
@@ -10,8 +11,6 @@ import {
     REMOVE_INCOME_ITEM,
     ADD_EXPENSE_ITEM,
     REMOVE_EXPENSE_ITEM,
-    HIDE_SIDEBAR,
-    SHOW_SIDEBAR,
     FETCH_ASSETS,
     FETCH_LIABILITIES,
     SET_INCOME,
@@ -69,19 +68,6 @@ const expenseListReducer = (oldList = [], action) => {
     }
 }
 
-const sideBarReducer = (show = false, action) => {
-    switch (action.type) {
-        case HIDE_SIDEBAR:
-            show = false;
-            return false;
-        case SHOW_SIDEBAR:
-            show = true;
-            return true;
-        default:
-            return show;
-    }
-}
-
 const pageReducer = (oldPage = "/", action) => {
     switch (action.type) {
         case SET_PAGE:
@@ -97,8 +83,9 @@ export default combineReducers({
     incomeList: incomeListReducer,
     expensesList: expenseListReducer,
     auth: authReducer,
-    showSidebar: sideBarReducer,
     vaultsState: vaultsReducer,
     page: pageReducer,
-    vaultDetails: vaultDetailsReducer
+    vaultDetails: vaultDetailsReducer,
+    sidebar: sidebarSlice.reducer,
+    vaults: vaultSlice.reducer
 })

@@ -1,7 +1,8 @@
 import React from 'react'
 import VaultCard from './VaultCard';
 import VaultHeader from './VaultHeader';
-import {fetchVaults,selectVault} from '../../actions'
+import {selectVault} from '../../actions';
+import {fetchVaults} from '../../features';
 import {connect} from 'react-redux';
 import Modals from './Modals';
 
@@ -19,11 +20,8 @@ class Vaults extends React.Component {
     }  
 
     renderVaults() {
-        const sortedVaults = this.props.vaults.sort((e1, e2) => {
-            return e2.favorite - e1.favorite
-        });
 
-        return sortedVaults.map(vault => {
+        return this.props.vaults.map(vault => {
             return <VaultCard 
                 key={vault._id}
                 id={vault.vaultId}
@@ -54,7 +52,7 @@ class Vaults extends React.Component {
 }
 
 const mapStateToProps = (state) => {
-    return {showCreateModal: state.vaultsState.showCreateModal, vaults:state.vaultsState.vaults, userId: state.auth.userId,
+    return {showCreateModal: state.vaultsState.showCreateModal, vaults:state.vaults.vaults, userId: state.auth.userId,
         showUnsplashModal: state.vaultsState.showUnsplashModal
     };
 }

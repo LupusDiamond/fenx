@@ -58,6 +58,6 @@ export const SIGN_IN = 'SIGN_IN';
 export const SIGN_OUT = 'SIGN_OUT';
 
 /// Sidebar
-export const HIDE_SIDEBAR = 'HIDE_SIDEBAR';
-export const SHOW_SIDEBAR = 'SHOW_SIDEBAR';
+/*export const HIDE_SIDEBAR = 'HIDE_SIDEBAR';
+export const SHOW_SIDEBAR = 'SHOW_SIDEBAR';*/
 export const SET_PAGE = 'SET_PAGE';

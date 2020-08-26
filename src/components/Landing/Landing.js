@@ -7,7 +7,7 @@ import GoogleAuth from "./GoogleAuth";
 import FenXLogo from "../../assets/svgs/FenXLogo";
 import Footer from "./Footer";
 import GoogleLoginButton from "./GoogleLoginButton";
-import {hideSidebar} from '../../actions';
+import {hideSidebar} from '../../features';
 
 const Landing = (props) => {
   props.hideSidebar();

@@ -1,9 +1,7 @@
 import React from "react";
 import "../assets/tailwind.css";
-
-import { showSidebar } from "../actions";
 import FenXLogo from "../assets/svgs/FenXLogo";
-
+import {showSidebar} from '../features';
 import { connect } from "react-redux";
 
 class Header extends React.Component {
@@ -38,5 +36,5 @@ class Header extends React.Component {
 }
 
 export default connect(null, {
-  showSidebar,
+  showSidebar
 })(Header);

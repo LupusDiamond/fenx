@@ -1,7 +1,8 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
 import {connect} from 'react-redux';
-import {hideSidebar, setPage} from '../../actions';
+import {setPage} from '../../actions';
+import {hideSidebar} from '../../features';
 import { motion } from 'framer-motion';
 
 const SideBarLink = ({destination, text, hideSidebar, page, setPage}) => {

@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import {connect} from 'react-redux';
-import {hideCreateModal, createVault} from '../../actions';
+import {hideCreateModal} from '../../actions';
+import {createVault} from '../../features';
 import {v4 as uuidv4} from 'uuid';
 
 class InputFieldsModal extends Component {
@@ -22,7 +23,15 @@ class InputFieldsModal extends Component {
     }
 
     onSaveClick = () => {
-      this.props.createVault(this.props.userId, ++this.counter, this.state.label, this.state.amount, this.props.imageUrl, uuidv4());
+      const information = {
+        userId: this.props.userId,
+        id: ++this.counter,
+        label: this.state.label,
+        amount: this.state.amount,
+        imageUrl: this.props.imageUrl,
+        vaultId: uuidv4()
+      }
+      this.props.createVault(information);
       this.props.hideCreateModal();
     }
 

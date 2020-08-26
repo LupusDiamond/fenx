@@ -1,6 +1,6 @@
 import React from "react";
 
-import {hideSidebar} from '../../actions';
+import {hideSidebar} from '../../features';
 import {connect} from 'react-redux';
 class Cross extends React.Component {
     render() {

@@ -94,7 +94,7 @@ class App extends Component {
   const mapStateToProps = (state) => {
     return {
       isSignedIn: state.auth.isSignedIn,
-      showSidebar: state.showSidebar,
+      showSidebar: state.sidebar,
       userId: state.auth.userId
     }
   }
