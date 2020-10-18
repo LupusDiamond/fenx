@@ -4,6 +4,7 @@ import {
   hideUnsplashModal,
   searchUnsplash,
   selectUnplashImage,
+  showCreateModal
 } from "../../features";
 
 class SelectImageModal extends Component {
@@ -20,6 +21,7 @@ class SelectImageModal extends Component {
   onSelectImage = (url) => {
     this.props.selectUnplashImage(url);
     this.props.hideUnsplashModal();
+    this.props.showCreateModal();
   };
 
   renderImages = () => {
@@ -154,4 +156,5 @@ export default connect(mapStateToProps, {
   searchUnsplash,
   hideUnsplashModal,
   selectUnplashImage,
+  showCreateModal
 })(SelectImageModal);
