@@ -4,6 +4,7 @@ import unsplash from '../apis/unsplash'
 const INITIAL_STATE = {
     showCreateModal: false,
     showUnsplashModal: false,
+    showDeleteModal: false,
     showSidebar: false,
     unsplashImages: [],
     selectedUnsplashImage: ''
@@ -33,6 +34,8 @@ export const uiSlice = createSlice({
         hideUnsplashModal: state => { state.showUnsplashModal = false },
         showSidebar: state => { state.showSidebar = true },
         hideSidebar: state => { state.showSidebar = false},
+        showDeleteModal: state => { state.showDeleteModal = true },
+        hideDeleteModal: state => { state.showDeleteModal = false}, 
         selectUnplashImage: (state, action) => { state.selectedUnsplashImage = action.payload }
     },
     extraReducers: {
@@ -47,5 +50,6 @@ export const {
     showCreateModal, showUnsplashModal,
     hideCreateModal, hideUnsplashModal, 
     showSidebar, hideSidebar,
-    selectUnplashImage
+    selectUnplashImage,
+    showDeleteModal, hideDeleteModal
 } = uiSlice.actions;

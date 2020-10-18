@@ -46,7 +46,9 @@ class VaultHeader extends Component {
 }
 
 const mapStateToProps = (state) => {
-  return { vaults: state.vaultsState.vaults };
+  return {
+    vaults: state.storage.vaults,
+  };
 };
 
 export default connect(mapStateToProps, {

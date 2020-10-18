@@ -81,8 +81,8 @@ class BigBoxes extends Component {
 
 const mapStateToProps = (state) => {
   return {
-    income: state.income,
-    expenses: state.expenses,
+    income: state.blitz.income,
+    expenses: state.blitz.expenses,
   };
 };
 

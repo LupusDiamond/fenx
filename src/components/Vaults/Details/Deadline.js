@@ -6,7 +6,7 @@ import ReverseSVG from '../../../assets/svgs/Reverse';
 import WarningSVG from '../../../assets/svgs/Warning';
 import PlusSVG from '../../../assets/svgs/Plus';
 
-import {activateGoal, fetchGoal} from '../../../actions';
+import {fetchGoal, activateGoal} from '../../../features';
 
 class Deadline extends Component {
 
@@ -29,7 +29,7 @@ class Deadline extends Component {
           className={`${disabledCursor} w-full bg-gray-200 py-2 px-4 md:text-lg text-gray-700 rounded-lg border-2 border-gray-400 focus:outline-none focus:shadow-outline`}
           name
           id
-          disabled
+          disabled={!this.props.hasGoal}
         />
         <div className="w-12 h-full bg-gray-300 border-t-2 border-r-2 border-b-2 border-gray-400 absolute top-0 right-0 rounded rounded-tr-lg rounded-br-lg pointer-events-none flex justify-center items-center cursor-pointer">
          <CalendarSVG />
@@ -43,7 +43,7 @@ class Deadline extends Component {
           name
           id
           placeholder="$000"
-          disabled
+          disabled={!this.props.hasGoal}
         />
         <div className="w-32 h-full bg-gray-300 border-t-2 border-r-2 border-b-2 border-gray-400 absolute top-0 right-0 rounded-tr-lg rounded-br-lg">
           {/* Arrow */}
@@ -51,7 +51,7 @@ class Deadline extends Component {
             <DownArrowSVG />
           </div>
           <select
-          disabled
+          disabled={!this.props.hasGoal}
             name
             id
             className={`${disabledCursor} w-full h-full bg-gray-300 rounded-tr-md rounded-br-md focus:outline-none focus:shadow-outline cursor-pointer lowercase text-xs md:text-sm font-semibold tracking-wider text-gray-700 appearance-none pl-3 pr-6`}
@@ -106,11 +106,11 @@ class Deadline extends Component {
 
 const mapStateToProps = (state) => {
   return {
-    hasGoal: state.vaultDetails.hasGoal,
-    vaultId: state.vaultDetails.vaultId
+    hasGoal: state.vault.hasGoal,
+    vaultId: state.vault.vaultId
   }
 }
 
 export default connect(mapStateToProps, {
-  activateGoal, fetchGoal
+   fetchGoal, activateGoal
 })(Deadline);

@@ -14,7 +14,7 @@ import {
   fetchLiablities,
   setIncome,
   setExpense,
-} from "../../actions";
+} from "../../features";
 
 class CashflowTable extends Component {
   state = {
@@ -156,8 +156,8 @@ class CashflowTable extends Component {
 
 const mapStateToProps = (state, ownProps) => {
   const list =
-    ownProps.type === "income" ? state.incomeList : state.expensesList;
-  return { listItems: list, userId: state.auth.userId };
+    ownProps.type === "income" ? state.blitz.incomeList : state.blitz.expensesList;
+  return { listItems: list, userId: state.user.userId };
 };
 
 export default connect(mapStateToProps, {

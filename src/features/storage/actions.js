@@ -21,7 +21,8 @@ export const createVault = createAsyncThunk(
         });
         return {
             _id: id,
-            label, totalAmount: amount, imageURL: imageUrl
+            label, totalAmount: amount, imageURL: imageUrl,
+            vaultId: vaultId
         }
     }
 )

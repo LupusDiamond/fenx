@@ -1,17 +1,20 @@
 import {createAsyncThunk} from '@reduxjs/toolkit';
+import server from '../../apis/server'
 
 export const selectVault = createAsyncThunk(
     'vault/selectVault',
     async (information) => {
         const {userId, vaultId} = information;
         const vault = await server.get(`/vaults/${userId}/${vaultId}`);
-        return vault;
+        console.log(vault);
+        return vault.data;
     }
 )
 
 export const vaultDeposit = createAsyncThunk(
     'vault/vaultDeposit',
     async (information) => {
+        const {vaultId, amount, username, imageURL} = information;
         const transaction = await server.post(`/vaults/contribute/${vaultId}`, {
             "amount": amount,
             "type": "DEPOSIT",
@@ -19,13 +22,11 @@ export const vaultDeposit = createAsyncThunk(
             "imageURL": imageURL
         });
         return {
-            payload: {
                 amount,
                 type: "DEPOSIT",
                 username,
                 imageURL,
                 date: "Now"
-            }
         }
     }
 )
@@ -33,6 +34,7 @@ export const vaultDeposit = createAsyncThunk(
 export const vaultWithdraw = createAsyncThunk(
     'vault/vaultWithdraw',
     async (information) => {
+        const {vaultId, amount, username, imageURL} = information;
         const transaction = await server.post(`/vaults/contribute/${vaultId}`, {
             "amount": amount,
             "type": "WITHDRAW",
@@ -40,13 +42,11 @@ export const vaultWithdraw = createAsyncThunk(
             "imageURL": imageURL
         });
         return {
-            payload: {
                 amount,
                 type: "WITHDRAW",
                 username,
                 imageURL,
                 date: "Now"
-            }
         }
     }
 )
@@ -55,7 +55,7 @@ export const fetchTransactions = createAsyncThunk(
     'vault/fetchTransactions',
     async (vaultId) => {
         const transactions = await server.get(`/vaults/transactions/${vaultId}`);
-        return transactions;
+        return transactions.data;
     }
 )
 
@@ -68,6 +68,24 @@ export const updateVault = createAsyncThunk(
             "amount": amount,
             "imageURL": imageURL
         });
-        return updatedVault;
+        return {
+            label, amount, imageURL
+        }
+    }
+)
+
+export const fetchGoal = createAsyncThunk(
+    'vault/fetchGoal',
+    async vaultId => {
+        const goal = await server.get(`/vaults/goals/${vaultId}`);
+        if (goal.data.hasGoal === false) {
+            return {
+                hasGoal: false
+            }
+        } else {
+            return {
+                hasGoal: true
+            }
+        }
     }
 )

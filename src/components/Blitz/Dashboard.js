@@ -27,11 +27,11 @@ class Dashboard extends Component {
 
   const mapStateToProps = (state) => {
     return { 
-      income: state.income,
-      expenses: state.expenses,
-      userId: state.auth.userId,
-      username: state.auth.username,
-      profilePicture: state.auth.profilePicture
+      income: state.blitz.income,
+      expenses: state.blitz.expenses,
+      userId: state.user.userId,
+      username: state.user.username,
+      profilePicture: state.user.profilePicture
     }
   }
 

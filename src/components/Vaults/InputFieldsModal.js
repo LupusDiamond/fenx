@@ -1,76 +1,109 @@
-import React, { Component } from 'react';
-import {connect} from 'react-redux';
-import {hideCreateModal} from '../../features';
-import {createVault} from '../../features';
-import {v4 as uuidv4} from 'uuid';
+import React, { Component } from "react";
+import { connect } from "react-redux";
+import { hideCreateModal } from "../../features";
+import { createVault } from "../../features";
+import { v4 as uuidv4 } from "uuid";
 
 class InputFieldsModal extends Component {
+  state = {
+    label: "",
+    amount: 0,
+  };
 
-    state = {
-      label: '',
-      amount: 0
+  showModal() {
+    if (this.props.showModal) {
+      return null;
     }
+    return "hidden";
+  }
 
-    showModal() {
-      if (this.props.showModal) {
-        return null;
-      }
-     // return "hidden";
-    }
+  onCancelClick = () => {
+    this.props.hideCreateModal();
+  };
 
-    onCancelClick = () => {
-      this.props.hideCreateModal();
-    }
+  onSaveClick = () => {
+    this.counter++;
+    let vaultId = uuidv4();
+    const information = {
+      userId: this.props.userId,
+      id: this.counter,
+      label: this.state.label,
+      amount: this.state.amount,
+      imageUrl: this.props.imageUrl,
+      vaultId: vaultId,
+    };
+    this.props.createVault(information);
+    this.props.hideCreateModal();
+  };
 
-    onSaveClick = () => {
-      this.counter++;
-      const information = {
-        userId: this.props.userId,
-        id: this.counter,
-        label: this.state.label,
-        amount: this.state.amount,
-        imageUrl: this.props.imageUrl,
-        vaultId: uuidv4()
-      }
-      this.props.createVault(information);
-      this.props.hideCreateModal();
-    }
-
-    render() {
-        return (
-        <div className={`flex flex-col justify-between flex-1 pt-1 ${this.showModal()}`}>
-          <div className="w-full mb-6">
-            {/* Input Box*/}
-            <div className="relative w-full mb-6">
-              <label htmlFor="Liabilities" className="text-sm bg-white uppercase text-gray-900 px-2 ml-3 absolute top-0 left-0 transform -translate-y-1/2">Name</label>
-              <input autoComplete="off" onChange={(e) => this.setState({label: e.target.value})} className="border-4 text-gray-900 border-gray-900 py-2 px-4 rounded-lg text-xl w-full focus:outline-none focus:shadow-outline" type="text" name="asset" id="asset" placeholder="Car, House etc" />
-            </div>
-            {/* Input Box*/}
-            <div className="relative w-full">
-              <label htmlFor="Liabilities" className="text-sm bg-white uppercase text-gray-900 px-2 ml-3 absolute top-0 left-0 transform -translate-y-1/2">Amount</label>
-              <input autoComplete="off" onChange={(e) => this.setState({amount: parseInt(e.target.value)})} className="border-4 text-gray-900 border-gray-900 py-2 px-4 rounded-lg text-xl w-full focus:outline-none focus:shadow-outline" type="text" name="asset" id="asset" placeholder="$000" />
-            </div>
+  render() {
+    return (
+      <div
+        className={`flex flex-col justify-between flex-1 ${this.showModal()}`}
+      >
+        <div className="w-full mb-6">
+          {/* Input*/}
+          <label
+            htmlFor="name"
+            className="text-xs md:text-sm uppercase text-gray-700 mb-1 flex"
+          >
+            Name
+          </label>
+          <div className="w-full relative mb-3">
+            <input
+              className="border-2 text-gray-900 border-gray-300 bg-gray-200 py-2 pl-4 pr-12 rounded-lg md:text-lg w-full focus:outline-none focus:shadow-outline"
+              type="text"
+              name="name"
+              id="name"
+              placeholder="Car, House etc"
+              autoComplete="off"
+              onChange={e => this.setState({label: e.target.value})}
+              value={this.state.label}
+            />
           </div>
-          {/* Buttons */}
-          <div className="w-full grid grid-cols-1 gap-3 sm:flex">
-            <button onClick={() => this.onSaveClick()} className="bg-gray-900 text-white text-base md:text-xl py-3 px-6 uppercase tracking-wider rounded-lg focus:outline-none focus:shadow-outline">
-              Save
-            </button>
-            <button onClick={() => this.onCancelClick()} className="bg-gray-300 text-gray-700 text-base md:text-xl py-3 px-6 uppercase tracking-wider rounded-lg focus:outline-none focus:shadow-outline">
-              Cancel
-            </button>
+          {/* Input*/}
+          <label
+            htmlFor="Amount"
+            className="text-xs md:text-sm uppercase text-gray-700 mb-1 flex"
+          >
+            Amount
+          </label>
+          <div className="relative w-full">
+            <input
+              className="border-2 text-gray-900 border-gray-300 bg-gray-200 py-2 px-4 rounded-lg md:text-lg w-full focus:outline-none focus:shadow-outline"
+              type="text"
+              name="Amount"
+              id="Amount"
+              placeholder="$000"
+              autoComplete="off"
+              onChange={e => this.setState({amount: +e.target.value})}
+              value={this.state.amount}
+            />
           </div>
         </div>
-        )
-    }
+        {/* Buttons */}
+        <div className="w-full grid gap-3 sm:flex">
+          <button onClick={() => this.onSaveClick()} className="bg-gray-900 text-white hover:bg-gray-800 text-base font-semibold py-2 px-6 uppercase tracking-wider rounded-lg focus:outline-none focus:shadow-outline border-2 border-gray-900">
+            Save Changes
+          </button>
+          <button onClick={() => this.onCancelClick()} className="text-gray-700 hover:bg-gray-200 text-base font-semibold py-2 px-6 uppercase tracking-wider rounded-lg focus:outline-none focus:shadow-outline border-2 border-gray-900">
+            Cancel
+          </button>
+        </div>
+      </div>
+    );
+  }
 }
 
 const mapStateToProps = (state) => {
-  return {showModal: state.ui.showCreateModal, imageUrl: state.vaultsState.modalPreviewImage,
-    userId: state.user.userId
+  return {
+    showModal: state.ui.showCreateModal,
+    imageUrl: state.ui.selectedUnsplashImage,
+    userId: state.user.userId,
   };
-}
+};
 
 export default connect(mapStateToProps, {
-  hideCreateModal, createVault
+  hideCreateModal,
+  createVault,
 })(InputFieldsModal);

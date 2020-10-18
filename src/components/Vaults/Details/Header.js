@@ -2,7 +2,7 @@ import React from 'react'
 import {Link} from 'react-router-dom';
 import BackSVG from '../../../assets/svgs/Back';
 import { connect } from 'react-redux';
-import {exitVault} from '../../../actions';
+import {exitVault} from '../../../features';
 function Header({exitVault}) {
     return (
         <div className="lg:col-span-3 flex justify-between items-baseline">

@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import {connect} from 'react-redux';
-import {vaultDeposit, vaultWithdraw} from '../../../actions';
+import {vaultDeposit, vaultWithdraw} from '../../../features';
 
 import CashSVG from '../../../assets/svgs/Cash';
 
@@ -11,21 +11,27 @@ class Contribute extends Component {
     }
 
     onDepositClick = () => {
+      const information = {
+        username: this.props.username,
+        vaultId: this.props.vaultId,
+        amount: parseInt(this.state.input),
+        imageURL: this.props.imageUrl
+      }
       this.props.vaultDeposit(
-        this.props.username,
-        this.props.vaultId,
-        parseInt(this.state.input),
-        this.props.imageUrl
+        information
       );
       this.setState({input: ''})
     }
 
     onWithdrawClick = () => {
+      const information = {
+        username: this.props.username,
+        vaultId: this.props.vaultId,
+        amount: parseInt(this.state.input),
+        imageURL: this.props.imageUrl
+      }
       this.props.vaultWithdraw(
-        this.props.username,
-        this.props.vaultId,
-        parseInt(this.state.input),
-        this.props.imageUrl
+        information
       );
       this.setState({input: ''})
     }
@@ -68,9 +74,9 @@ class Contribute extends Component {
 
 const mapStateToProps = (state) => {
   return {
-    username: state.auth.username,
-    vaultId: state.vaultDetails.vaultId,
-    imageUrl: state.auth.profilePicture
+    username: state.user.username,
+    vaultId: state.vault.vaultId,
+    imageUrl: state.user.profilePicture
   }
 }
 

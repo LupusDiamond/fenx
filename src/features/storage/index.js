@@ -23,7 +23,8 @@ export const storageSlice = createSlice({
             state.vaults.push(action.payload);
         },
         [deleteVault.fulfilled]: (state, action) => {
-            state.vaults = state.vaults.filter(vault => vault.vaultId !== action.payload.id);
+            console.log(action.payload.vaultId)
+            state.vaults = state.vaults.filter(vault => vault.vaultId !== action.payload.vaultId);
         }
     }
 })

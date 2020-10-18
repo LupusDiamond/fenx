@@ -113,7 +113,7 @@ class VaultEditModal extends React.Component {
 }
 
 const mapStateToProps = (state) => {
-  return { userId: state.auth.userId };
+  return { userId: state.user.userId };
 };
 
 export default connect(mapStateToProps, {

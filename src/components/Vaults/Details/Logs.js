@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import LogsSVG from '../../../assets/svgs/Logs';
 import {connect} from 'react-redux';
-import {fetchTransactions} from '../../../actions';
+import {fetchTransactions} from '../../../features';
 
 import Transaction from './Transaction';
 class Logs extends Component {
@@ -13,8 +13,14 @@ class Logs extends Component {
    }
 
     renderTransactions = () => {
+
       if (this.props.vaultId !== null) {
-        let threeTransactions = this.props.transactions.slice(Math.max(this.props.transactions.length - 3, 1));
+        console.log("tr", this.props.transactions )
+        let threeTransactions;
+        if (this.props.transactions.length > 3)
+        threeTransactions = this.props.transactions.slice(Math.max(this.props.transactions.length - 3, 1));
+        else threeTransactions = this.props.transactions.slice();
+        console.log("three", threeTransactions)
         threeTransactions= threeTransactions.reverse();
         return threeTransactions.map(transaction => {
           return (
@@ -64,9 +70,9 @@ class Logs extends Component {
 
 const mapStateToProps = (state) => {
   return {
-    userId: state.auth.userId,
-    vaultId: state.vaultDetails.vaultId,
-    transactions: state.vaultDetails.transactions
+    userId: state.user.userId,
+    vaultId: state.vault.vaultId,
+    transactions: state.vault.transactions
   };
 }
 
