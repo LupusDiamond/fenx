@@ -4,7 +4,7 @@ export default class Dashboard extends Component {
     render() {
         return (
             <div>
-                Dashboard
+                Dashboard in progress, visit Vaults from the sidebar.
             </div>
         )
     }
